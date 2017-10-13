@@ -57,7 +57,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/static/";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 0);
@@ -65,9 +65,44 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-console.log('webpack está funcionando')
+"use strict";
+
+
+// var Title = require('./app');
+
+// ReactDOM.render(
+//   <Title />,
+//   document.querySelector('[data-js="app"')
+// )
+
+var sum = __webpack_require__(1);
+
+console.log(sum(1, 2));
+
+console.log('webpack está funcionando');
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// var Title = React.createClass({
+//   render: function(){
+//     return <h1>Titulo</h1>
+//   }
+// })
+
+function sum(val1, val2){
+  return val1 + val2;
+}
+
+// module.exports = Title;
+module.exports = sum;
 
 
 /***/ })
