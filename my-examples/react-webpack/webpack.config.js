@@ -2,11 +2,9 @@
 
 const path = require('path');
 const webpack = require('webpack');
-const validate = require('webpack-validator'); // atribuindo o wepbpack validator
+const validate = require('webpack-validator');
 
-module.exports = validate({ // chamando a função do validate para validar a config
-    devtool: 'source-map',
-
+module.exports = validate({
     entry: [
       'react-hot-loader/patch',
       'webpack-dev-server/client?http://localhost:3000',
