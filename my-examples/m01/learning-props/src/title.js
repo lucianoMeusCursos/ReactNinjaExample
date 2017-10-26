@@ -10,4 +10,5 @@ Title.defaultProps = {
   name: 'Desconhecido',
   lastname: 'Sem sobrenome'
 }
+
 export default Title
