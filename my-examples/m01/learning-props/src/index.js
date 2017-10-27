@@ -10,11 +10,12 @@ const renderApp = (NextApp) => {
     <AppContainer>
       <NextApp />
     </AppContainer>,
-    document.querySelector('[data-js="app"')
+    document.querySelector('[data-js="app"]')
   )
 }
+
 renderApp(App)
-// Criando a lógica para o reload somente em desenvolvimento.
+
 if (module.hot) {
   module.hot.accept('./app', () => {
     const NextApp = require('./app').default
