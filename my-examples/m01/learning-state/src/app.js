@@ -6,13 +6,16 @@ class App extends Component {
   constructor () {
     super();
     this.state = {
-      text: 'Luciano'
+      text: 'Luciano',
+      numero: 2
     }
   }
 
   render () {
     return (
-      <div className='container'>
+      <div className='container' onClick={() => this.setState({
+        text: "Olá Bem Vindo"
+      })}>
         {this.state.text}
       </div>
     )
