@@ -8,7 +8,7 @@ class App extends Component {
   constructor () {
     super();
     this.state = {
-      teste: 'green'
+      color: 'green'
     }
   }
 
@@ -22,7 +22,7 @@ class App extends Component {
             <Button
               key={color}
               handleClick={() => {
-                this.setState({ teste: color })
+                this.setState({ color })
                 }}>
               {color}
             </ Button>
