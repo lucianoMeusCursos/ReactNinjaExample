@@ -1,6 +1,10 @@
 'use strict'
 
 import React, { Component } from 'react'
+import Search from './components/search'
+import UserInfo from './components/user-info'
+import Actions from './components/actions'
+import Repos from './components/repos'
 
 class App extends Component {
 
@@ -8,41 +12,27 @@ class App extends Component {
 
     return (
       <div className="app">
-        <div className="search">
-          <input type="search" placeholder="Digite o nome do usuário no github"/>
-        </div>
+        <Search />
+        <UserInfo />
+        <Actions />
 
-        <div className="user-info">
-          <img src="https://avatars2.githubusercontent.com/u/1054454" alt="" />
-          <h1>
-            <a href="https://github.com/lucianobarauna">Luciano Barauna</a>
-          </h1>
-        </div>
+        <Repos
+          clasName="repos"
+          title="Repositórios:"
+          repos={[{
+              name: "link qualquer",
+              link:"link qualquer"
+            }]}
+          />
 
-        <ul className="repos-info">
-          <li>- Repositórios: 122</li>
-          <li>- Seguidores: 10</li>
-          <li>-- Seguindo: 10</li>
-        </ul>
-
-        <div className="actions">
-          <button>Ver respositórios</button>
-          <button>Ver favoritos</button>
-        </div>
-
-        <div className="repos">
-          <h2>Repositórios:</h2>
-          <ul>
-            <li><a href="#">Nome do repositório</a></li>
-          </ul>
-        </div>
-
-        <div className="starred">
-          <h2>Favoritos:</h2>
-          <ul>
-            <li><a href="#">Nome do repositório</a></li>
-          </ul>
-        </div>
+        <Repos
+          clasName="starred"
+          title="Favoritos:"
+          repos={[{
+              name: "link qualquer",
+              link:"link qualquer"
+            }]}
+          />
 
       </div>
     )
