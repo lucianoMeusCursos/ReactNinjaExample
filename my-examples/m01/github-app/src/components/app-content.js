@@ -14,23 +14,23 @@ const AppContent = ({
   getRepos,
   getStarred
 }) => (
-  <div className="app">
+  <div className='app'>
     <Search handleSearch={handleSearch} />
     {!!userinfo && <UserInfo userinfo={userinfo} />}
     {!!userinfo && <Actions getRepos={getRepos} getStarred={getStarred} />}
 
     {!!repos.length &&
       <Repos
-        clasName="repos"
-        title="Repositórios:"
+        clasName='repos'
+        title='Repositórios:'
         repos={repos}
       />
     }
 
     {!!starred.length &&
       <Repos
-        clasName="starred"
-        title="Favoritos:"
+        clasName='starred'
+        title='Favoritos:'
         repos={starred}
       />
     }

@@ -26,6 +26,3 @@ Repos.propTypes = {
 }
 
 export default Repos
-
-
-

@@ -3,10 +3,10 @@
 import React, { PropTypes } from 'react'
 
 const Search = ({ handleSearch }) => (
-  <div className="search">
+  <div className='search'>
     <input
-      type="search"
-      placeholder="Digite o nome do usuário no github"
+      type='search'
+      placeholder='Digite o nome do usuário no github'
       onKeyUp={handleSearch}
     />
   </div>

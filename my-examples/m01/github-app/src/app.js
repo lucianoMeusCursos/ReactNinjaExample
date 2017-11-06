@@ -24,23 +24,30 @@ class App extends Component {
     const value = e.target.value
     const keyCode = e.which || e.keyCode
     const ENTER = 13
+    const target = e.target
 
     if (keyCode === ENTER) {
+      target.disabled = true
+      console.log('antes de atribuir', e)
       ajax().get(this.getGithubApiUrl(value))
-        .then((result) => {
-          this.setState({
-            userinfo: {
-              username: result.name,
-              photo: result.avatar_url,
-              login: result.login,
-              repos: result.public_repos,
-              followers: result.followers,
-              following: result.following
-            },
-            repos: [],
-            starred: []
-          })
+      .then((result) => {
+        this.setState({
+          userinfo: {
+            username: result.name,
+            photo: result.avatar_url,
+            login: result.login,
+            repos: result.public_repos,
+            followers: result.followers,
+            following: result.following
+          },
+          repos: [],
+          starred: []
         })
+      })
+      .always(() => {
+        console.log('depois de atribuir', e)
+        target.disabled = false
+      })
     }
   }
 
@@ -48,16 +55,15 @@ class App extends Component {
     return (e) => {
       const username = this.state.userinfo.login
       ajax().get(this.getGithubApiUrl(username, type))
-        .then((result) => {
-          this.setState({
-            [type]: result.map((repo) => ({
-                name: repo.name,
-                link: repo.html_url
-            }))
-          })
+      .then((result) => {
+        this.setState({
+          [type]: result.map((repo) => ({
+            name: repo.name,
+            link: repo.html_url
+          }))
         })
+      })
     }
-
   }
 
   render () {
