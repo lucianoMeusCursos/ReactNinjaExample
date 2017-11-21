@@ -1,11 +1,12 @@
 'use strict'
 
-var arr = [1, 2, 3]
-var plusOne = (item) => item + 1
+const map = (arr = [], func = (item) => item) => {
+  let newArr = []
 
-plusOne(1)
-plusOne(3)
+  for (let i = 0; i < arr.length; i++)
+    newArr.push(func(arr[i], i, arr))
 
-arr.map(plusOne)
+  return newArr
+}
 
-arr.map((item, index, array) => ({item, index, array }))
+export default map
