@@ -1,18 +1,14 @@
 'use strict'
 
 const map = (arr = [], func = (item) => item) => {
-  if (arr.length === 0)
-    return []
+  return(function mapInternal(arrayInternal, counter){
+    const [head, ...tail] = arrayInternal
 
-
-    const [head, ...tail] = arr
-
-    console.log('isso é o head', head)
-    console.log('isso é o tail', tail)
-    console.log('isso é func', func)
-
-  return [func(head)].concat(map(tail, func))
-
+    return arrayInternal.length === 0 ? [] : [
+      func(head, counter, arr),
+      ...(mapInternal(tail, counter + 1))
+    ]
+  })(arr, 0)
 }
 
 export default map
