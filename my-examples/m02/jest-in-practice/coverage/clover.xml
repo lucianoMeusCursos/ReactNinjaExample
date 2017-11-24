@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1511469221754" clover="3.2.0">
-  <project timestamp="1511469221755" name="All files">
+<coverage generated="1511514765141" clover="3.2.0">
+  <project timestamp="1511514765141" name="All files">
     <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1" elements="9" coveredelements="9" complexity="0" loc="6" ncloc="6" packages="1" files="1" classes="1">
-      <file name="filter.js" path="C:\Users\luciano.lourenco\Documents\Luciano\Pessoal\GIT\github\estudo\ReactNinjaExample\my-examples\m02\jest-in-practice\src\filter\filter.js">
+      <file name="filter.js" path="/Users/baraunaluciano/Documents/desenv/github/estudos/ReactNinjaExample/my-examples/m02/jest-in-practice/src/filter/filter.js">
         <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="5" type="stmt"/>
         <line num="6" count="5" type="stmt"/>
         <line num="7" count="19" type="cond" truecount="2" falsecount="0"/>
-        <line num="8" count="10" type="stmt"/>
+        <line num="8" count="14" type="stmt"/>
         <line num="11" count="5" type="stmt"/>
       </file>
     </metrics>
