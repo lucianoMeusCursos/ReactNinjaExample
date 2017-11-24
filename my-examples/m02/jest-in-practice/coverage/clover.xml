@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1511514765141" clover="3.2.0">
-  <project timestamp="1511514765141" name="All files">
-    <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1" elements="9" coveredelements="9" complexity="0" loc="6" ncloc="6" packages="1" files="1" classes="1">
+<coverage generated="1511516609364" clover="3.2.0">
+  <project timestamp="1511516609364" name="All files">
+    <metrics statements="10" coveredstatements="10" conditionals="6" coveredconditionals="6" methods="3" coveredmethods="3" elements="19" coveredelements="19" complexity="0" loc="10" ncloc="10" packages="1" files="2" classes="2">
+      <file name="filter-recursive.js" path="/Users/baraunaluciano/Documents/desenv/github/estudos/ReactNinjaExample/my-examples/m02/jest-in-practice/src/filter/filter-recursive.js">
+        <metrics statements="4" coveredstatements="4" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="5" type="stmt"/>
+        <line num="5" count="24" type="stmt"/>
+        <line num="7" count="24" type="cond" truecount="2" falsecount="0"/>
+      </file>
       <file name="filter.js" path="/Users/baraunaluciano/Documents/desenv/github/estudos/ReactNinjaExample/my-examples/m02/jest-in-practice/src/filter/filter.js">
         <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="3" count="1" type="stmt"/>
