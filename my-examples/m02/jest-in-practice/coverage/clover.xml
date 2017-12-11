@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1512679835089" clover="3.2.0">
-  <project timestamp="1512679835089" name="All files">
-    <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2" elements="12" coveredelements="12" complexity="0" loc="8" ncloc="8" packages="1" files="1" classes="1">
+<coverage generated="1513001303445" clover="3.2.0">
+  <project timestamp="1513001303445" name="All files">
+    <metrics statements="7" coveredstatements="7" conditionals="6" coveredconditionals="6" methods="3" coveredmethods="3" elements="16" coveredelements="16" complexity="0" loc="7" ncloc="7" packages="1" files="1" classes="1">
       <file name="reduce-recursive.js" path="c:\Users\luciano.lourenco\Documents\Luciano\Pessoal\GIT\github\estudo\ReactNinjaExample\my-examples\m02\jest-in-practice\src\reduce\reduce-recursive.js">
-        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="6" type="stmt"/>
-        <line num="5" count="6" type="stmt"/>
+        <metrics statements="7" coveredstatements="7" conditionals="6" coveredconditionals="6" methods="3" coveredmethods="3"/>
+        <line num="3" count="12" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="6" type="cond" truecount="2" falsecount="0"/>
         <line num="7" count="6" type="cond" truecount="2" falsecount="0"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="17" count="6" type="stmt"/>
-        <line num="18" count="6" type="stmt"/>
+        <line num="9" count="6" type="stmt"/>
+        <line num="10" count="20" type="stmt"/>
+        <line num="12" count="20" type="cond" truecount="2" falsecount="0"/>
       </file>
     </metrics>
   </project>

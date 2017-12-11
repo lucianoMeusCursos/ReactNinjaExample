@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for filter/filter-recursive.js</title>
+    <title>Code coverage report for reduce/reduce-recursive.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="..\prettify.css" />
     <link rel="stylesheet" href="..\base.css" />
@@ -16,18 +16,18 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="..\index.html">All files</a> / <a href="index.html">filter</a> filter-recursive.js
+      <a href="..\index.html">All files</a> / <a href="index.html">reduce</a> reduce-recursive.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>4/4</span>
+        <span class='fraction'>9/9</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">75% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>4/4</span>
+        <span class='fraction'>3/4</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>4/4</span>
+        <span class='fraction'>9/9</span>
       </div>
     </div>
   </div>
@@ -56,13 +56,41 @@
 11
 12
 13
-14</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -71,17 +99,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict'
 &nbsp;
-const filter = (arr, func) =&gt; {
-  return(function filterInternal(arrayInternal, counter){
-    const [head, ...tail] = arrayInternal
+const reduce = (arr, func, initialValue) =&gt; {
+  let acc = initialValue
+  let arrCopy = arr
 &nbsp;
-    return arrayInternal.length === 0
-    ? []
-    : (func(head, counter, arr) ? [head] : []).concat(filterInternal(tail, counter + 1))
-  })(arr, 0)
+  if(initialValue === undefined) {
+    acc = arr[0]
+    arrCopy = arr.slice(1)
+  }
+&nbsp;
+  // for(var i = 0; i &lt; arrCopy.length; i++){
+  //   acc = func(acc, arrCopy[i], i, arrCopy)
+  // }
+  // return acc
+&nbsp;
+  return (function reduceInternal (accInternal, arrInternal, counter) { // passando os valores inicias que todos os parametros que serão modificados
+    const [head, ...tail] = arrInternal // cabeça e cauda que vão pegar no array interno
+&nbsp;
+    return arrInternal.lenghth === 0
+      ? <span class="branch-0 cbranch-no" title="branch not covered" >accInternal</span>
+      : func(accInternal, head, counter, arrCopy) //acumulador, primeiro item do array, contador, array inicial (primeira interação do array)
+&nbsp;
+  })(acc, arrCopy, 0) // acumulador, cópia do array, indice da iteração
 }
 &nbsp;
-export default filter
+export default reduce
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->

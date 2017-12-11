@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for filter/filter-recursive.js</title>
+    <title>Code coverage report for some/some-recursive.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="..\prettify.css" />
     <link rel="stylesheet" href="..\base.css" />
@@ -16,7 +16,7 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="..\index.html">All files</a> / <a href="index.html">filter</a> filter-recursive.js
+      <a href="..\index.html">All files</a> / <a href="index.html">some</a> some-recursive.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
@@ -56,13 +56,17 @@
 11
 12
 13
-14</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+14
+15
+16</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -71,17 +75,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict'
 &nbsp;
-const filter = (arr, func) =&gt; {
-  return(function filterInternal(arrayInternal, counter){
+const some = (arr, func) =&gt; {
+  return (function someInternal (arrayInternal, counter) {
     const [head, ...tail] = arrayInternal
 &nbsp;
     return arrayInternal.length === 0
-    ? []
-    : (func(head, counter, arr) ? [head] : []).concat(filterInternal(tail, counter + 1))
+      ? false
+        : func(head, counter, arr)
+          ? true
+          : someInternal(tail, counter + 1)
   })(arr, 0)
 }
 &nbsp;
-export default filter
+export default some
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
