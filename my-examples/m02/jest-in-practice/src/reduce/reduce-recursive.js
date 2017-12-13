@@ -8,10 +8,11 @@ const reduce = (arr, func, initialValue) => {
 
   return (function reduceInternal (accInternal, arrInternal, counter) {
     const [head, ...tail] = arrInternal
+    const accNext = () => func(accInternal, head, counter, arrCopy)
 
     return arrInternal.length === 0
       ? accInternal
-      : reduceInternal(func(accInternal, head, counter, arrCopy), tail, counter + 1)
+      : reduceInternal(accNext(), tail, counter + 1)
 
   })(acc, arrCopy, 0)
 }
