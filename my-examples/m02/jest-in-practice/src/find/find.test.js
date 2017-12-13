@@ -16,3 +16,8 @@ it('find([1, 2, 3], (item) => item === 1) should return 1', () => {
 it('find([1, 2, 3], (item) => item === 3) should return 1', () => {
   expect(find([1, 2, 3], (item) => item === 3)).to.be.equal(3)
 })
+
+
+it('find([1, 2, 3], (item) => item === 3) should return 1', () => {
+  expect(find([1, 2, 3], (item) => item === 3)).to.be.equal(3)
+})
