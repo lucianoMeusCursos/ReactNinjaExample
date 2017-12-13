@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for reduce/reduce-recursive.js</title>
+    <title>Code coverage report for reduce/main-reduce-recursive.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="..\prettify.css" />
     <link rel="stylesheet" href="..\base.css" />
@@ -16,28 +16,28 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="..\index.html">All files</a> / <a href="index.html">reduce</a> reduce-recursive.js
+      <a href="..\index.html">All files</a> / <a href="index.html">reduce</a> main-reduce-recursive.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>1/1</span>
+        <span class='fraction'>10/10</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>6/6</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>4/4</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>1/1</span>
+        <span class='fraction'>8/8</span>
       </div>
     </div>
   </div>
@@ -50,20 +50,59 @@
 5
 6
 7
-8</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict'
 &nbsp;
-import mainReduce from './main-reduce-recursive'
+const isInitialValueUndefined = (initialValue) =&gt; initialValue === undefined
 &nbsp;
-const reduce = mainReduce
+const mainReduce = (arr, func, initialValue) =&gt; {
+  const acc = isInitialValueUndefined(initialValue) ? arr[0] : initialValue
+  const arrCopy = isInitialValueUndefined(initialValue) ? arr.slice(1) : arr
 &nbsp;
-export default reduce
+  return (function mainReduceInternal (accInternal, arrInternal, counter) {
+    const [head, ...tail] = arrInternal
+    const accNext = () =&gt; func(accInternal, head, counter, arrCopy)
+&nbsp;
+    return arrInternal.length === 0
+      ? accInternal
+      : mainReduceInternal(accNext(), tail, counter + 1)
+&nbsp;
+  })(acc, arrCopy, 0)
+}
+&nbsp;
+export default mainReduce
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
