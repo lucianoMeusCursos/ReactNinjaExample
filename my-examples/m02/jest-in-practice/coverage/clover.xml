@@ -1,16 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
-<coverage generated="1512331254267" clover="3.2.0">
-  <project timestamp="1512331254267" name="All files">
-    <metrics statements="4" coveredstatements="4" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2" elements="10" coveredelements="10" complexity="0" loc="4" ncloc="4" packages="1" files="1" classes="1">
-      <file name="every-recursive.js" path="/Users/baraunaluciano/Documents/desenv/github/estudos/ReactNinjaExample/my-examples/m02/jest-in-practice/src/every/every-recursive.js">
-        <metrics statements="4" coveredstatements="4" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="5" type="stmt"/>
-        <line num="5" count="11" type="stmt"/>
-        <line num="7" count="11" type="cond" truecount="2" falsecount="0"/>
-      </file>
-=======
 <coverage generated="1513194488181" clover="3.2.0">
   <project timestamp="1513194488181" name="All files">
     <metrics statements="14" coveredstatements="14" conditionals="10" coveredconditionals="9" methods="6" coveredmethods="6" elements="30" coveredelements="29" complexity="0" loc="14" ncloc="14" packages="2" files="4" classes="4">
@@ -46,7 +34,6 @@
           <line num="10" count="3" type="stmt"/>
         </file>
       </package>
->>>>>>> a34dcf5aa7e765c3a75903902cbc936849c94132
     </metrics>
   </project>
 </coverage>
