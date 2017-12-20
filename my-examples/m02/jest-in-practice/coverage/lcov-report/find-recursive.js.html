@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for find.js</title>
+    <title>Code coverage report for find-recursive.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -16,32 +16,28 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="index.html">All files</a> find.js
+      <a href="index.html">All files</a> find-recursive.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>5/5</span>
+        <span class='fraction'>4/4</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>2/2</span>
+        <span class='fraction'>4/4</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/1</span>
+        <span class='fraction'>2/2</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-<<<<<<< HEAD
         <span class='fraction'>4/4</span>
-=======
-        <span class='fraction'>5/5</span>
->>>>>>> e581110f74499654ede7ff34eee476cd33875fe6
       </div>
     </div>
   </div>
@@ -58,50 +54,70 @@
 9
 10
 11
-<<<<<<< HEAD
 12
-13</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict'
-&nbsp;
-const find = (arr, func) =&gt; {
-  for (let i = 0; i &lt; arr.length; i++){
-    if(func(arr[i])) {
-      return arr[i]
-    }
-  }
-&nbsp;
-=======
-12</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&nbsp;
 const find = (arr, func) =&gt; {
-  for (let i = 0; i &lt; arr.length; i++) {
-    if (func(arr[i], i, arr)) {
-      return arr[i]
-    }
-  }
-  return undefined
->>>>>>> e581110f74499654ede7ff34eee476cd33875fe6
+  // for (let i = 0; i &lt; arr.length; i++) {
+  //   if (func(arr[i], i, arr)) {
+  //     return arr[i]
+  //   }
+  // }
+  // return 1
+  return (function findInternal(arrInternal, counter) {
+    const [head, ...tail] = arrInternal // pegando cabeça e cauda do array internal
+&nbsp;
+    return arrInternal.length === 0
+      ? undefined
+      : func(head, counter, arr)
+        ? head
+        : findInternal(tail, counter + 1)
+    // se o array foi igual a 0 ou não retornar nada ele retorna undefined
+    // se não ele retorna a func que o usuario passou como parametros:
+    // head - primeiro item
+    // counter - indice
+    // arr - array passado, aqui não podemos passar o arrInternal pois a cada itereção ele é modificado
+    // se fun for verdadeira ela vai retorna head que é o nosso item e se não for ira retornar novamente a função findInternal passando como argumentos o restante do array (tail) somando ao contador + 1
+  })(arr, 0) // passando o arr inical e o contador
 }
 &nbsp;
 export default find
@@ -111,11 +127,7 @@ export default find
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-<<<<<<< HEAD
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Dec 13 2017 18:22:02 GMT-0200 (Horário brasileiro de verão)
-=======
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Dec 20 2017 09:43:44 GMT-0200 (-02)
->>>>>>> e581110f74499654ede7ff34eee476cd33875fe6
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Dec 20 2017 09:21:25 GMT-0200 (-02)
 </div>
 </div>
 <script src="prettify.js"></script>
