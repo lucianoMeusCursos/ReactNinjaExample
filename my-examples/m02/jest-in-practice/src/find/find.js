@@ -5,7 +5,7 @@ const find = (arr, func) => {
       return arr[i]
     }
   }
-  return 1
+  return undefined
 }
 
 export default find
