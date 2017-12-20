@@ -20,7 +20,7 @@ it('every([1, 2, 3], (item) => item) should return true', () => {
 })
 
 it('every([1, 2, 3], (item, index) => item === index - 1) should return true', () => {
-  expect(every([1, 2, 3], (item, index) => item === index - 1)).to.be.ok
+  expect(every([1, 2, 3], (item, index) => item === index - 1)).to.not.be.ok
 })
 
 it('every([1, 2, 3], (item, index, array) => array.length === 3) should return true', () => {

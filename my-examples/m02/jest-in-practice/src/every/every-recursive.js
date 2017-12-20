@@ -1,13 +1,15 @@
 'use strict'
 
 const every = (arr, func) => {
-    for(let i = 0; i < arr.lenght; i++) {
-        if(!func(arr[i], i, arr)) {
-            return false
-        }
-    }
+  return (function everyInternal ( arrayInternal, counter) {
+    const [head, ...tail] = arrayInternal
 
-    return true
+    return arrayInternal.length === 0
+      ? true
+      : !func(head, counter, arr)
+        ? false
+        : everyInternal(tail, counter + 1)
+  })(arr, 0)
 }
 
 export default every

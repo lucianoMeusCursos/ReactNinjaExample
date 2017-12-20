@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1512166942821" clover="3.2.0">
-  <project timestamp="1512166942821" name="All files">
-    <metrics statements="5" coveredstatements="3" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="1" elements="8" coveredelements="4" complexity="0" loc="5" ncloc="5" packages="1" files="1" classes="1">
-      <file name="every-recursive.js" path="C:\Users\luciano.lourenco\Documents\Luciano\Pessoal\GIT\github\estudo\ReactNinjaExample\my-examples\m02\jest-in-practice\src\every\every-recursive.js">
-        <metrics statements="5" coveredstatements="3" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="1"/>
+<coverage generated="1512331254267" clover="3.2.0">
+  <project timestamp="1512331254267" name="All files">
+    <metrics statements="4" coveredstatements="4" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2" elements="10" coveredelements="10" complexity="0" loc="4" ncloc="4" packages="1" files="1" classes="1">
+      <file name="every-recursive.js" path="/Users/baraunaluciano/Documents/desenv/github/estudos/ReactNinjaExample/my-examples/m02/jest-in-practice/src/every/every-recursive.js">
+        <metrics statements="4" coveredstatements="4" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="5" type="stmt"/>
-        <line num="5" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="10" count="5" type="stmt"/>
+        <line num="5" count="11" type="stmt"/>
+        <line num="7" count="11" type="cond" truecount="2" falsecount="0"/>
       </file>
     </metrics>
   </project>
