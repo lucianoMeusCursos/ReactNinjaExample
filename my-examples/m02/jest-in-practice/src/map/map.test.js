@@ -44,3 +44,54 @@ it('map() should return []', () => {
 it('map([1, 2]) should return [1, 2]', () => {
   expect(map([1, 2])).to.be.deep.equal([1, 2])
 })
+
+// Criando teste para mostrar o erro TypeError quando não for passado um array
+it('map(1) should throw a TyperError', () => {
+  let error
+  try {
+    map(1)
+  } catch (e) {
+    error = e
+  }
+
+  expect(error.name).to.be.equal('TypeError')
+})
+
+// Criando e testando uma mensagem de erro customizada para o primeiro parâmetro caso ele não seja um array
+it('map(1) should throw a TyperError with message "The first parameter must be an array"', () => {
+  let error
+
+  try {
+    map(1)
+  } catch (e) {
+    error = e
+  }
+
+  expect(error.message).to.be.equal('The first parameter must be an array')
+})
+
+// Criando teste para mostrar o erro TypeError quando não for passado uma função no segundo parâmetro
+it('map([1, 2], "function") should throw a TyperError ', () => {
+  let error
+
+  try {
+    map([1, 2], 'function')
+  } catch (e) {
+    error = e
+  }
+
+  expect(error.name).to.be.equal('TypeError')
+})
+
+// Criando e testando uma mensagem de erro customizada para o segundo parâmetro caso ele não seja uma função
+it('map([1, 2], "function") should throw a TyperError with message "The second parameter must be a function" ', () => {
+  let error
+
+  try {
+    map([1, 2], 'function')
+  } catch (e) {
+    error = e
+  }
+
+  expect(error.message).to.be.equal('The second parameter must be a function')
+})
