@@ -4,6 +4,8 @@ const path = require('path')
 const webpack = require('webpack')
 const validate = require('webpack-validator')
 
+const HtmlPlugin = require('html-webpack-plugin')
+
 module.exports = validate({
   devtool: 'source-map',
 
@@ -21,7 +23,8 @@ module.exports = validate({
   },
 
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlPlugin()
   ],
 
   module: {
