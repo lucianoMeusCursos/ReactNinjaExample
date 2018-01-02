@@ -16,17 +16,7 @@ body {
   width: 100%;
 }
 
-.search {
-  margin-bottom: 30px;
-}
 
-.search input {
-  font-size: 30px;
-  padding: 10px;
-  width: 100%;
-  -webkit-appearance: none;
-  border: solid 1px gray;
-}
 
 .user-info img {
   float: left;
