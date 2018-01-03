@@ -9,9 +9,10 @@ const Actions = ({ getRepos, getStarred }) => (
     <button onClick={getStarred}>Ver favoritos</button>
   </div>
 )
-export default Actions
 
 Actions.PropTypes = {
   getRepos: PropTypes.func.isRequired,
   getStarred: PropTypes.func.isRequired
 }
+
+export default Actions
