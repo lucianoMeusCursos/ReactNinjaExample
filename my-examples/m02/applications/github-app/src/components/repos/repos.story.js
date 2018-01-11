@@ -12,8 +12,8 @@ storiesOf('Repos', module)
     <Repos
       title='Favoritos'
       repos={[{
-          link: 'https://www.google.com.br',
-          name: 'Qualquer nome aqui'
+        link: 'https://www.google.com.br',
+        name: 'Qualquer nome aqui'
       }]}
     />
   ))

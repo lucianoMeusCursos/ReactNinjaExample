@@ -7,7 +7,7 @@ const validate = require('webpack-validator')
 const HtmlPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-const crp =  new ExtractTextPlugin('crp.css')
+const crp = new ExtractTextPlugin('crp.css')
 const styles = new ExtractTextPlugin('[name]-[hash].css')
 
 module.exports = validate({
@@ -18,7 +18,7 @@ module.exports = validate({
 
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name]-[hash].js',
+    filename: '[name]-[hash].js'
   },
 
   plugins: [
