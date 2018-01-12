@@ -42,7 +42,10 @@
   },
   "standard": {
     "globals": [
-      "alert"
+      "alert",
+      "test",
+      "it",
+      "describe"
     ]
   }
 }
