@@ -4,16 +4,12 @@ import React from 'react'
 import pagination from 'utils/pagination'
 import Page from './page'
 
- // criando o componente página
-/* Criamos o componente page para separarmos melhor a lógica de não mostrar os links quando tivermos ... */
-
-const Pagination = ({total, activePage}) => (
+const Pagination = ({ total, activePage, pageLink }) => (
   <div>
     <ul>
     {pagination({ total, activePage }).map((page, index) => (
         <li key={index}>
-
-          <Page page={page}/>
+          <Page page={page} pageLink={pageLink.replace('%page%', page)} />
         </li>
     ))}
     </ul>

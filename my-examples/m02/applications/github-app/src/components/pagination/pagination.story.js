@@ -7,5 +7,5 @@ import Pagination from './index'
 const stories = storiesOf('<Pagination />', module)
 
 stories.add('without props', () => (
-  <Pagination total={10} activePage={1} />
+  <Pagination total={10} pageLink="http://teste.com?page/%page%" />
 ))
