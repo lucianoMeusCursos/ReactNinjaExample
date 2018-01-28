@@ -1,9 +1,10 @@
 'use strict'
 
 import React from 'react'
+
+const Dots = () => <span>...</span>
 const Page = ({ page, pageLink, onClick }) => {
-  const Component = page === '...' ? 'span' : 'a'
-  const href = page === '...' ? null : pageLink
+  const Component = page === '...' ? Dots : 'a'
 
   const handleClick = !onClick ? null : (e) => {
     e.preventDefault()
@@ -11,7 +12,7 @@ const Page = ({ page, pageLink, onClick }) => {
   }
 
   return (
-    <Component href={href} onClick={handleClick}>
+    <Component href={pageLink} onClick={handleClick}>
       {page}
     </Component>
   )

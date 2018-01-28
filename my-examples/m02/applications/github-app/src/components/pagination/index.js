@@ -8,16 +8,16 @@ const Pagination = ({ total, activePage, pageLink, onClick }) => (
   <div>
     <ul>
     {pagination({ total, activePage }).map((page, index) => (
-        <li key={index}>
+        <li key={index} style={activePage === page ? {color: 'red'} : null}>
           <Page page={page} pageLink={pageLink.replace('%page%', page)} onClick={onClick} />
         </li>
     ))}
     </ul>
   </div>
 )
-
 Pagination.defaultProps = {
-  pageLink: ''
+  pageLink: '',
+  activePage: 1
 }
 
 Pagination.propTypes = {
