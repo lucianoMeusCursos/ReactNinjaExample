@@ -14,7 +14,7 @@ const Repos = ({ clasName, title, repos }) => (
         </li>
       ))}
     </ul>
-    <Pagination total={10} />
+    <Pagination total={10} activePage={3} />
   </div>
 )
 
