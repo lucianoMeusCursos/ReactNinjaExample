@@ -5,9 +5,9 @@ import Pagination from 'components/pagination/'
 import './repos.css'
 
 const Repos = ({ clasName, title, repos }) => (
-  <div className={`repos-list ${clasName}`}>
+  <div className={`repos-list-container ${clasName}`}>
     <h2>{title}</h2>
-    <ul>
+    <ul className='repos-list'>
       {repos.map((repo, index) => (
         <li key={index}>
           <a href={repo.link}>{repo.name}</a>

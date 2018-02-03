@@ -3,6 +3,7 @@
 import React from 'react'
 
 const Dots = ({ className }) => <span className={className}>...</span>
+
 const Page = ({ page, pageLink, onClick }) => {
   const Component = page === '...' ? Dots : 'a'
 
