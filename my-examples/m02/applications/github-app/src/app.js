@@ -13,12 +13,14 @@ class App extends Component {
       starred: [],
       isFetching: false
     }
+
+    this.perPage = 3
   }
 
-  getGithubApiUrl (username, type) {
+  getGithubApiUrl (username, type, page = 1) {
     const internalUser = username ? `/${username}` : ''
     const internalType = type ? `/${type}` : ''
-    return `https://api.github.com/users${internalUser}${internalType}`
+    return `https://api.github.com/users${internalUser}${internalType}?per_page=${this.perPage}&page=${page}`
   }
 
   handleSearch (e) {
@@ -46,10 +48,10 @@ class App extends Component {
     }
   }
 
-  getRepos (type) {
+  getRepos (type, page) {
     return (e) => {
       const username = this.state.userinfo.login
-      ajax().get(this.getGithubApiUrl(username, type))
+      ajax().get(this.getGithubApiUrl(username, type, page))
       .then((result) => {
         this.setState({
           [type]: result.map((repo) => ({
@@ -67,6 +69,7 @@ class App extends Component {
       handleSearch={(e) => this.handleSearch(e)}
       getRepos={this.getRepos('repos')}
       getStarred={this.getRepos('starred')}
+      handlePagination={(type, page) => this.getRepos(type, page)()}
     />
   }
 }
