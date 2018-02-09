@@ -6,7 +6,7 @@ import ajax from '@fdaciuk/ajax'
 
 const initialReposState = {
   repos: [],
-  pagination: { // colocamos aqui os valores iniciais para 1 em total e activePage
+  pagination: {
     total: 1,
     activePage: 1
   }
@@ -23,6 +23,7 @@ class App extends Component {
     }
 
     this.perPage = 3
+    this.handleSearch = this.handleSearch.bind(this)
   }
 
   getGithubApiUrl (username, type, page = 1) {
@@ -39,7 +40,6 @@ class App extends Component {
       this.setState({ isFetching: true })
       ajax().get(this.getGithubApiUrl(value))
       .then((result, xhr) => {
-        console.log(xhr.getAllResponseHeaders())
         this.setState({
           userinfo: {
             username: result.name,
@@ -62,7 +62,8 @@ class App extends Component {
       const username = this.state.userinfo.login
       ajax().get(this.getGithubApiUrl(username, type, page))
       .then((result, xhr) => {
-        console.log(xhr.getAllResponseHeaders())
+        const linkHeader = xhr.getResponseHeader('Link') || ''
+        const totalPagesMatch = linkHeader.match(/&page=(\d+)>; rel="last/)
         this.setState({
           [type]: {
             repos: result.map((repo) => ({
@@ -70,7 +71,7 @@ class App extends Component {
               link: repo.html_url
             })),
             pagination: {
-              ...this.state[type].pagination,
+              total: totalPagesMatch ? +totalPagesMatch[1] : this.state[type].pagination.total,
               activePage: page
             }
           }
@@ -82,7 +83,7 @@ class App extends Component {
   render () {
     return <AppContent
       {...this.state}
-      handleSearch={(e) => this.handleSearch(e)}
+      handleSearch={this.handleSearch}
       getRepos={this.getRepos('repos')}
       getStarred={this.getRepos('starred')}
       handlePagination={(type, page) => this.getRepos(type, page)()}

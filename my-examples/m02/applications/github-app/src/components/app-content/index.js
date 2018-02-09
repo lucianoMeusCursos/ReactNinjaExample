@@ -24,6 +24,7 @@ const AppContent = ({
     {!!userinfo && <Actions getRepos={getRepos} getStarred={getStarred} />}
 
     <div className='repos-container'>
+        {console.log(`aqui dentro app content ---`, repos)}
         {!!repos.repos.length &&
           <Repos
             clasName='repos'
@@ -48,6 +49,7 @@ const reposPropTypesShape = {
   repos: PropTypes.array.isRequired,
   pagination: PropTypes.object
 }
+
 AppContent.propTypes = {
   userinfo: PropTypes.object,
   repos: PropTypes.shape(reposPropTypesShape).isRequired,
