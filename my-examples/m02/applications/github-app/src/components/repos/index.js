@@ -14,7 +14,7 @@ const Repos = ({ clasName, title, repos, handlePagination }) => (
         </li>
       ))}
     </ul>
-    <Pagination total={10} activePage={repos.pagination.activePage} onClick={handlePagination} />
+    <Pagination total={repos.pagination.total} activePage={repos.pagination.activePage} onClick={handlePagination} />
   </div>
 )
 
