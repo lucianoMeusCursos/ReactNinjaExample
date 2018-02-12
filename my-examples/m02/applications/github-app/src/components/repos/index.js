@@ -6,7 +6,6 @@ import './repos.css'
 
 const Repos = ({ clasName, title, repos, handlePagination }) => (
   <div className={`repos-list-container ${clasName}`}>
-    {console.log(`aqui dentro repos ---`, repos)}
     <h2>{title}</h2>
     <ul className='repos-list'>
       {repos.repos.map((repo, index) => (
@@ -20,7 +19,8 @@ const Repos = ({ clasName, title, repos, handlePagination }) => (
 )
 
 Repos.defaultProps = {
-  className: ''
+  className: '',
+  activePage: 1
 }
 
 Repos.propTypes = {
@@ -36,7 +36,7 @@ Repos.propTypes = {
   pagination: PropTypes.shape({
     total: PropTypes.number,
     activePage: PropTypes.number
-  }).isRequired
+  })
 }
 
 export default Repos

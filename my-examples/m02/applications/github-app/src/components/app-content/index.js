@@ -24,7 +24,6 @@ const AppContent = ({
     {!!userinfo && <Actions getRepos={getRepos} getStarred={getStarred} />}
 
     <div className='repos-container'>
-        {console.log(`aqui dentro app content ---`, repos)}
         {!!repos.repos.length &&
           <Repos
             clasName='repos'
