@@ -6,7 +6,7 @@ const common = require('./common')
 const HtmlPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-module.exports = validate({
+module.exports = {
   entry: common.entry,
   output: common.output,
 
@@ -33,8 +33,7 @@ module.exports = validate({
       common.standardPreLoader,
       common.jsLoader,
       Object.assign({}, common.cssLoader, {
-        loaders: undefined,
-        loader: ExtractTextPlugin.extract.apply({
+        use: ExtractTextPlugin.extract({ // removemos o apply
           fallback: common.cssLoader.use[0],
           use: common.cssLoader.use.slice(1)
         })
@@ -43,4 +42,4 @@ module.exports = validate({
   },
 
   resolve: common.resolve
-})
+}

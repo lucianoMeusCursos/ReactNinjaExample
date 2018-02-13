@@ -11,7 +11,7 @@ const add = (args) => {
 }
 
 const addDev = (args) => {
-  return add(['dev'].concat(args))
+  return add(['--dev'].concat(args))
 }
 
 add(dependencies).on(`close`, () => {

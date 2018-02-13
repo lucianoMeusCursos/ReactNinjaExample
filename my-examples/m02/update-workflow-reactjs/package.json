@@ -8,7 +8,8 @@
     "lint:fix": "standard --fix",
     "build": "cross-env NODE_ENV=production webpack --progress --config webpack/prod.config -p",
     "storybook": "start-storybook -p 6006 -c storybook",
-    "build-storybook": "build-storybook -c storybook"
+    "build-storybook": "build-storybook -c storybook",
+    "update-packages": "node scripts/update.js"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.35.3",
@@ -32,8 +33,7 @@
     "style-loader": "^0.13.1",
     "webpack": "^2.2.1",
     "webpack-dashboard": "^0.3.0",
-    "webpack-dev-server": "^2.3.0",
-    "webpack-validator": "^2.3.0"
+    "webpack-dev-server": "^2.3.0"
   },
   "dependencies": {
     "@fdaciuk/ajax": "^2.3.0",
