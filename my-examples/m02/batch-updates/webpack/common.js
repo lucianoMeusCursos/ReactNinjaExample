@@ -10,7 +10,6 @@ const paths = {
 
 module.exports = {
   paths,
-
   entry: join(paths.src, 'index'),
 
   output: {

@@ -6,15 +6,15 @@ const webpackConfig = require('@kadira/storybook/dist/server/config/defaults/web
 module.exports = (config, env) => {
   const newConfig = webpackConfig(config, env)
 
-  // const preloaders = Object.assign({}, common.standardPreLoader, {
-  //   use: undefined,
-  //   loader: common.standardPreLoader.use
-  // })
-  // newConfig.module.preLoaders = (newConfig.module.preLoaders || []).concat(preloaders)
+  const preloaders = Object.assign({}, common.standardPreLoader, {
+    use: undefined,
+    loader: common.standardPreLoader.use
+  })
+  newConfig.module.preLoaders = (newConfig.module.preLoaders || []).concat(preloaders)
 
   // funfa no windows
-  newConfig.module.rules = (newConfig.module.rules || []).concat()
-  newConfig.resolve = common.resolve
+  // newConfig.module.rules = (newConfig.module.rules || []).concat()
+  // newConfig.resolve = common.resolve
 
   return newConfig
 }

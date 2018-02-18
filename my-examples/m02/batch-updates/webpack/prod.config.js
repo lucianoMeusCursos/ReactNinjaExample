@@ -9,7 +9,6 @@ const CleanPlugin = require('clean-webpack-plugin')
 
 module.exports = {
   entry: common.entry,
-
   output: common.output,
 
   plugins: [
