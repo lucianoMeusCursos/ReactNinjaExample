@@ -10,10 +10,24 @@ module.exports = {
     filename: 'bundle.js'
   },
 
+  // usando file-loader
+  // module: {
+  //   rules: [{
+  //     test: /\.txt$/,
+  //     // use: 'file-loader?name=[path][name][hash:8].[ext]'
+  //   }]
+  // }
+
+  // usando url-loader
   module: {
     rules: [{
       test: /\.txt$/,
-      use: 'file-loader?name=[path][name][hash:8].[ext]'
+      use: {
+        loader: 'url-loader',
+        query: {
+          limit: 100
+        }
+      }
     }]
   }
 }

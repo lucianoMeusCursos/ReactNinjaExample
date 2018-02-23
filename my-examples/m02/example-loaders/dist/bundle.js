@@ -76,9 +76,9 @@
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-module.exports = __webpack_require__.p + "name397c3769.txt";
+module.exports = "data:text/plain;base64,Ck1ldSBub21lIGFxdWkgZGVudHJvCg=="
 
 /***/ }),
 /* 2 */
