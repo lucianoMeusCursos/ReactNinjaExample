@@ -19,15 +19,24 @@ module.exports = {
   // }
 
   // usando url-loader
+//   module: {
+//     rules: [{
+//       test: /\.txt$/,
+//       use: {
+//         loader: 'url-loader',
+//         query: {
+//           limit: 100
+//         }
+//       }
+//     }]
+//   }
+// }
+
+// usando raw-loader
   module: {
     rules: [{
       test: /\.txt$/,
-      use: {
-        loader: 'url-loader',
-        query: {
-          limit: 100
-        }
-      }
+      use: 'raw-loader'
     }]
   }
 }

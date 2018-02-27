@@ -78,7 +78,7 @@
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = "data:text/plain;base64,Ck1ldSBub21lIGFxdWkgZGVudHJvCg=="
+module.exports = "\nMeu nome aqui dentro\n"
 
 /***/ }),
 /* 2 */
