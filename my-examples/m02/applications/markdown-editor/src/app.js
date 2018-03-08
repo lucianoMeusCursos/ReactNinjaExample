@@ -1,33 +1,27 @@
 import React, { Component } from 'react'
-import './css/style.css'
+// import './css/style.css'
 
 class App extends Component {
 
   constructor() {
     super()
     this.state = { value: '' }
-    this.handleSubmit = (e) => {
-      e.preventDefault()
+
+    this.handleChange = (e) => {
       this.setState({
-        value: e.target.textarea.value
+        value: e.target.value
       })
     }
-
   }
 
 
   render() {
     return (
       <div className='editor'>
-        <form onSubmit={this.handleSubmit}>
-          <textarea name='textarea'></textarea>
-          <button>Renderizar markup</button>
-        </form>
-
+        <textarea value={this.state.value} onChange={this.handleChange}></textarea>
         <div className='view'>
           {this.state.value}
         </div>
-
       </div>
     )
   }

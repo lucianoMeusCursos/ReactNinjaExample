@@ -1,4 +1,9 @@
 {
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "license": "MIT",
   "scripts": {
     "start": "node server.js",
     "start:dashboard": "webpack-dashboard -- node server.js",
@@ -37,7 +42,7 @@
     "standard-loader": "^5.0.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.8",
-    "webpack": "^2.2.1",
+    "webpack": "^3.11.0",
     "webpack-dashboard": "^0.3.0",
     "webpack-dev-server": "^2.3.0"
   },
