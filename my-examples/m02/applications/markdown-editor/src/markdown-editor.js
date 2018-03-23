@@ -1,11 +1,8 @@
-'use strict'
-
 import React, { PropTypes } from 'react'
 
 const MarkdownEditor = ({ value, handleChange, getMarkup }) => (
   <div className='editor'>
     <textarea value={value} onChange={handleChange} autofocus />
-    {/* <div className='view' dangerouslySetInnerHTML={{ __html: value }} /> */}
     <div className='view' dangerouslySetInnerHTML={getMarkup()} />
   </div>
 )
