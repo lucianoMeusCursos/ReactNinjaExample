@@ -13,7 +13,6 @@ module.exports = {
   output: common.output,
 
   plugins: [
-    new BundleAnalyzerPlugin(),
 
     new CleanPlugin(['dist'], {
       root: common.paths.root
@@ -58,7 +57,9 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true
     })
-  ],
+  ].concat(
+    process.env.ANALYZER ? new BundleAnalyzerPlugin() : []
+  ),
 
   module: {
     rules: [
