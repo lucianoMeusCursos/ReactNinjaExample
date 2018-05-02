@@ -8,7 +8,7 @@ const MarkdownEditorHeader = (handleSave) => (
 )
 
 MarkdownEditorHeader.propTypes = {
-  handleSave: PropTypes.func.isRequired
+  handleSave: PropTypes.func
 }
 
 export default MarkdownEditorHeader

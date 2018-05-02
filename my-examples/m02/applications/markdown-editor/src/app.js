@@ -28,6 +28,7 @@ class App extends Component {
       return { __html: marked(this.state.value) }
     }
     this.handleSave = () => {
+      console.log('dadasda')
       localStorage.setItem('md', this.state.value)
     }
   }
