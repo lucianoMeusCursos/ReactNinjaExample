@@ -1,14 +1,14 @@
 'use strict'
 import React, { PropTypes } from 'react'
 
-const MarkdownEditorHeader = (handleSave) => (
+const MarkdownEditorHeader = ({ isSaving }) => (
   <header className='editor-header'>
-    <button className='save-message' onClick={handleSave}>SALVAR</button>
+    <p className='save-message'>{isSaving ? 'Salvando...' : 'Salvo!'}</p>
   </header>
 )
 
 MarkdownEditorHeader.propTypes = {
-  handleSave: PropTypes.func
+  isSaving: PropTypes.bool.isRequired
 }
 
 export default MarkdownEditorHeader

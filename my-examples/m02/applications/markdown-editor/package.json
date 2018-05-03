@@ -61,6 +61,8 @@
     "react-dom": "^15.4.2"
   },
   "standard": {
-    "globals": ["localStorage"]
+    "globals": [
+      "localStorage"
+    ]
   }
 }
