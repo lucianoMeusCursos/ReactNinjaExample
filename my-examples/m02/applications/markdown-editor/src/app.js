@@ -18,24 +18,32 @@ import('highlight.js').then((hljs) => {
 class App extends Component {
   constructor() {
     super()
+
     this.state = {
       value: '',
       isSaving: false
     }
+
     this.handleChange = (e) => {
       this.setState({
         value: e.target.value,
         isSaving: true
       })
     }
+
     this.getMarkup = () => {
       return { __html: marked(this.state.value) }
     }
+
     this.handleSave = () => {
       localStorage.setItem('md', this.state.value)
       this.setState({
         isSaving: false
       })
+    }
+
+    this.handleRemove = () => {
+      localStorage.removeItem('md')
     }
   }
 
@@ -46,7 +54,7 @@ class App extends Component {
 
   componentDidUpdate () {
     clearInterval(this.timer)
-    this.timer = setTimeout(this.handleSave, 1000)
+    this.timer = setTimeout(this.handleSave, 300)
   }
 
   componentWillUnmount() {
@@ -59,6 +67,7 @@ class App extends Component {
        value={this.state.value}
        isSaving={this.state.isSaving}
        handleChange={this.handleChange}
+       handleRemove={this.handleRemove}
        getMarkup={this.getMarkup}
       />
     )
