@@ -21,7 +21,7 @@ class App extends Component {
 
     this.state = {
       value: '',
-      isSaving: false
+      isSaving: null
     }
 
     this.handleChange = (e) => {
