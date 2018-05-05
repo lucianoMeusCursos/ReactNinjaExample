@@ -50,7 +50,7 @@ class App extends Component {
     this.handleCreate = () => {
       console.log('Criar novo markdown')
       this.setState({ value: '' })
-      this.textarea.focus()
+      this.textearea.focus()
     }
 
     this.textareaRef = (node) => {
