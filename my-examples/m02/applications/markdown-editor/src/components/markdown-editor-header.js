@@ -4,7 +4,7 @@ import React, { PropTypes } from 'react'
 const MarkdownEditorHeader = ({ isSaving, handleRemove }) => (
   <header className='editor-header'>
     <p className='save-message'>{isSaving ? 'Salvando...' : 'Salvo!'}</p>
-    <button onClick={handleRemove}>Remover</button>
+    <button className='button-remove' onClick={handleRemove}>Remover</button>
   </header>
 )
 
