@@ -46,6 +46,16 @@ class App extends Component {
       localStorage.removeItem('md')
       this.setState({ value: ''})
     }
+
+    this.handleCreate = () => {
+      console.log('Criar novo markdown')
+      this.setState({ value: '' })
+      this.textarea.focus()
+    }
+
+    this.textareaRef = (node) => {
+      this.textearea = node
+    }
   }
 
   componentDidMount () {
@@ -65,11 +75,13 @@ class App extends Component {
   render() {
     return (
       <MarkdownEditor
-       value={this.state.value}
-       isSaving={this.state.isSaving}
-       handleChange={this.handleChange}
-       handleRemove={this.handleRemove}
-       getMarkup={this.getMarkup}
+        value={this.state.value}
+        isSaving={this.state.isSaving}
+        handleChange={this.handleChange}
+        handleRemove={this.handleRemove}
+        handleCreate={this.handleCreate}
+        getMarkup={this.getMarkup}
+        textareaRef={this.textareaRef}
       />
     )
   }
