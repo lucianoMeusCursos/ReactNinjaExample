@@ -58,7 +58,8 @@
     "preact": "^8.2.7",
     "preact-compat": "^3.18.0",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "strclass": "^2.0.9"
   },
   "standard": {
     "globals": [
