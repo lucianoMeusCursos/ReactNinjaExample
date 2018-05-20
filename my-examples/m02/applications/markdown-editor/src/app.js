@@ -28,7 +28,8 @@ class App extends Component {
 
     this.state = {
       ...this.clearState(),
-      isSaving: null
+      isSaving: null,
+      files: {}
     }
 
 
@@ -68,6 +69,25 @@ class App extends Component {
     this.textareaRef = (node) => {
       this.textearea = node
     }
+
+    this.handleOpenFile = (fileId) => () => {
+      this.setState({
+        value: this.state.files[fileId],
+        id: fileId
+      })
+    }
+
+  }
+
+  componentDidMount () {
+    const files = Object.keys(localStorage)
+    console.log(files)
+    this.setState({
+      files: files.reduce((acc, fileId) => ({
+        ...acc,
+        [fileId]: localStorage.getItem(fileId)
+      }), {})
+    })
   }
 
   componentDidUpdate () {
@@ -89,6 +109,8 @@ class App extends Component {
         handleCreate={this.handleCreate}
         getMarkup={this.getMarkup}
         textareaRef={this.textareaRef}
+        files={this.state.files}
+        handleOpenFile={this.handleOpenFile}
       />
     )
   }
