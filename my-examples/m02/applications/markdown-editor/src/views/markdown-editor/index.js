@@ -3,10 +3,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Header from './header.js'
+import Files from './files'
 
 const MarkdownEditor = ({ value, handleChange, getMarkup, textareaRef, ...props }) => (
   <section className='editor'>
     <Header {...props} />
+    <Files />
     <textarea value={value} onChange={handleChange} autoFocus ref={textareaRef} />
     <article className='view' dangerouslySetInnerHTML={getMarkup()} />
   </section>
@@ -18,7 +20,5 @@ MarkdownEditor.propTypes = {
   getMarkup: PropTypes.func.isRequired,
   textareaRef: PropTypes.func.isRequired
 }
-
-
 
 export default MarkdownEditor
