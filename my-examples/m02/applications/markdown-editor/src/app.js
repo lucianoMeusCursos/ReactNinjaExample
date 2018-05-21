@@ -46,14 +46,18 @@ class App extends Component {
 
     this.handleSave = () => {
       if (this.state.isSaving) {
-        localStorage.setItem(this.state.id, this.state.value)
+        const newFile = {
+          title: 'Sem título',
+          content: this.state.value
+        }
+        localStorage.setItem(this.state.id, JSON.stringify(newFile))
         this.setState({
           isSaving: false,
           files: {
-            ...this.state.files,
-            [this.state.id]: this.state.value
-          }
-        })
+              ...this.state.files,
+              [this.state.id]: newFile
+            }
+          })
       }
     }
 
@@ -81,7 +85,7 @@ class App extends Component {
 
     this.handleOpenFile = (fileId) => () => {
       this.setState({
-        value: this.state.files[fileId],
+        value: this.state.files[fileId].content,
         id: fileId
       })
     }
