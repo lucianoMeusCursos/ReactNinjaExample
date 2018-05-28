@@ -92,11 +92,11 @@ class App extends Component {
 
   }
 
-  componentDidMount () {
+  componentDidMount() {
     const files = Object.keys(localStorage)
     console.log(files)
     this.setState({
-      files: files.reduce((acc, fileId) => ({
+      files: files.filter((id) => id.match(/^\w{8}-\w{4}-\w{4}-\w{4}-\w{12}$/)).reduce((acc, fileId) => ({
         ...acc,
         [fileId]: localStorage.getItem(fileId)
       }), {})
