@@ -22,6 +22,7 @@ class App extends Component {
     super()
 
     this.clearState = () => ({
+      title: '',
       value: '',
       id: v4(),
     })
@@ -29,14 +30,13 @@ class App extends Component {
     this.state = {
       ...this.clearState(),
       isSaving: null,
-      title: '',
       files: {}
     }
 
 
-    this.handleChange = (e) => {
+    this.handleChange = (field) => (e) => {
       this.setState({
-        value: e.target.value,
+        [field]: e.target.value,
         isSaving: true
       })
     }
