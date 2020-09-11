@@ -11,7 +11,6 @@ const App = ({ todos, handleAddTodo, handleToggleTodo }) => {
         <input type='text' name="todo" />
         <button type="submit">Adicionar</button>
       </form>
-      {console.log(todos)}
       <ul>
         {todos.map((todo) => (
           <li
@@ -34,7 +33,7 @@ const App = ({ todos, handleAddTodo, handleToggleTodo }) => {
 
 // Mapeando as props utilizadas
 const mapStateToProps = (state) => ({
-  todos: state
+  todos: state.todos
 })
 
 // Mapeando as actions utilizadas
