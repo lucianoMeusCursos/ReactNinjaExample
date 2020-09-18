@@ -32,12 +32,14 @@ const getVisibleTodos = (todos, activeFilter) => {
   //   default:
   //     return ''
   // }
+  // 1º refactor
   // const filterItems = {
   //   [filterActions.SHOW_ALL]: todos,
   //   [filterActions.SHOW_COMPLETED]: todos.filter((todo) => todo.completed),
   //   [filterActions.SHOW_ACTIVE]: todos.filter((todo) => !todo.completed)
   // }
   // return filterItems[activeFilter]
+  // 2º refactor
   return {
     [filterActions.SHOW_ALL]: todos,
     [filterActions.SHOW_COMPLETED]: todos.filter((todo) => todo.completed),
