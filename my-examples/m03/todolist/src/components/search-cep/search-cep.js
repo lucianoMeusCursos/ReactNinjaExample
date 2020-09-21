@@ -9,9 +9,10 @@ const SearchCep = ({
   state,
   status,
   statusText,
+  handleSubmit
 }) => (
   <div>
-    <form>
+    <form onSubmit={handleSubmit}>
       <input type="text" name="cep"/>
       <button type="submit">Buscar endereço</button>
     </form>
