@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import reducer from './redux-flow/reducers'
 import App from './App';
-import './index.css';
+import 'milligram';
 
 
 
