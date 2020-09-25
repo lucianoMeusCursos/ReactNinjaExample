@@ -6,9 +6,9 @@ const initialState = {
   city: '',
   code: '',
   district: '',
-  ok: true,
+  ok: '',
   state: '',
-  status: 200,
+  status: '',
   statusText: '',
   message: ''
 }
