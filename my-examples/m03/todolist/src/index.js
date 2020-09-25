@@ -7,13 +7,22 @@ import reducer from './redux-flow/reducers'
 import App from './App';
 import 'milligram';
 
+const initialState = {
+  todos: [{
+    id: 0,
+    text: 'Um exemplo com initialState',
+    completed: false
+  }]
+}
 
-
-const store = createStore(reducer)
-
-store.subscribe(() => {
+const rederState = () => {
   console.log('state: ', store.getState())
-})
+}
+
+const store = createStore(reducer, initialState)
+
+store.subscribe(rederState)
+rederState()
 
 ReactDOM.render(
   <React.StrictMode>
