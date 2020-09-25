@@ -2,7 +2,7 @@
 import createReducer from '../create-reducer'
 import { ADD_TODO, TOGGLE_TODO } from "./actions";
 
-export const initialState = [];
+ const initialState = [];
 
 
 const todos = createReducer(initialState, {
