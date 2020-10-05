@@ -1,37 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
-import reducer from './redux-flow/reducers'
 import App from './App';
 import 'milligram';
+import configureStore from './redux-flow/configure-store'
 
 // Um exemplo para se criar um estado inicial na aplicação
 const initialState = {
   todos: [{
     id: 0,
     text: 'Um exemplo com initialState',
-    completed: false
+    completed: true
   }]
 }
 
-const middleware = ({dispatch, getState}) => (next) => (action) => {
-  console.log('LOGGER::will dispatch:', action)
-  const nextAction = next(action)
-  console.log('LOGGER::next action:', nextAction)
-  return nextAction
-}
+const store = configureStore({ initialState })
 
-// const store = createStore(reducer, initialState)
-const store = createStore(reducer, initialState, applyMiddleware(middleware))
-
-const rederState = () => {
-  console.log('state: ', store.getState())
-}
-
-store.subscribe(rederState)
-rederState()
+store.dispatch((dispatch, getState) => {
+  console.log('async dispa: ', dispatch, getState)
+})
 
 ReactDOM.render(
   <React.StrictMode>
