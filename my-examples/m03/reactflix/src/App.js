@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import VideosList from './components/videos-list';
+import VideoSingle from './components/video-single.js';
 
 import 'normalize.css';
 import 'milligram';
@@ -18,6 +19,7 @@ const App = () => (
       <h1>ReactFlix</h1>
     </Header>
     <Main>
+      <VideoSingle />
       <VideosList />
     </Main>
     <Footer>
