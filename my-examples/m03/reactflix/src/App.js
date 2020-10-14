@@ -1,9 +1,9 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
+import VideosList from './components/videos-list';
 
 import 'normalize.css';
 import 'milligram';
-
 
 const GlobalStyle = createGlobalStyle`
   html, body, #root, #root > div {
@@ -18,7 +18,7 @@ const App = () => (
       <h1>ReactFlix</h1>
     </Header>
     <Main>
-      conteúdo aqui
+      <VideosList />
     </Main>
     <Footer>
       Rodape copyright
@@ -39,6 +39,8 @@ const Header = styled.header`
 const Main = styled.main`
   min-height: calc(100% - ${headerHeight} - ${footerHeight});
 `
+
+
 
 const Footer = styled.footer`
   height: ${footerHeight};
