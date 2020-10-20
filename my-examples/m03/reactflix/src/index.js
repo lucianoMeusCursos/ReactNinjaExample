@@ -17,6 +17,8 @@ const initialState = {
 
 const store = configureStore({ initialState })
 
+const db = window.firebase.database()
+
 store.dispatch((dispatch, getState) => {
   console.log('async dispa: ', dispatch, getState)
 })
