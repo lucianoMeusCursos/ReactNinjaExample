@@ -18,6 +18,15 @@ const initialState = {
 const store = configureStore({ initialState })
 
 const db = window.firebase.database()
+const videos = db.ref("videos");
+
+videos.on('value', (snapshot) => {
+  console.log('snapshot:', snapshot.val())
+}, (error) => {
+  console.log('error:', error);
+})
+
+
 
 store.dispatch((dispatch, getState) => {
   console.log('async dispa: ', dispatch, getState)
