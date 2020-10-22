@@ -7,16 +7,7 @@ import { db } from './config/firebase';
 
 import App from './App';
 
-// Um exemplo para se criar um estado inicial na aplicação
-const initialState = {
-  todos: [{
-    id: 0,
-    text: 'Um exemplo com initialState',
-    completed: true
-  }]
-}
-
-const store = configureStore({ initialState })
+const store = configureStore()
 
 
 ReactDOM.render(
