@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
-import configureStore from './redux-flow/configure-store'
+import configureStore from './redux-flow/configure-store';
+import { db } from './config/firebase';
 
 import App from './App';
 
@@ -17,7 +18,6 @@ const initialState = {
 
 const store = configureStore({ initialState })
 
-const db = window.firebase.database()
 const videos = db.ref("videos");
 
 videos.on('value', (snapshot) => {
@@ -25,8 +25,6 @@ videos.on('value', (snapshot) => {
 }, (error) => {
   console.log('error:', error);
 })
-
-
 
 store.dispatch((dispatch, getState) => {
   console.log('async dispa: ', dispatch, getState)
