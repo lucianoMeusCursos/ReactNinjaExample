@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import VideosList from './components/videos-list';
 import VideoSingle from './components/video-single.js';
+import RegisterVideo from './components/register-video';
 
 import 'normalize.css';
 import 'milligram';
@@ -15,13 +16,17 @@ const GlobalStyle = createGlobalStyle`
 const App = () => (
   <Container>
     <GlobalStyle />
+
     <Header>
       <h1>ReactFlix</h1>
     </Header>
+
     <Main>
+      <RegisterVideo />
       <VideoSingle />
       <VideosList />
     </Main>
+
     <Footer>
       Rodape copyright
     </Footer>
@@ -41,8 +46,6 @@ const Header = styled.header`
 const Main = styled.main`
   min-height: calc(100% - ${headerHeight} - ${footerHeight});
 `
-
-
 
 const Footer = styled.footer`
   height: ${footerHeight};
