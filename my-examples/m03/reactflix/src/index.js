@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import configureStore from './redux-flow/configure-store';
-import { db } from './config/firebase';
+// import { db } from './config/firebase'; // tirando por conta de erro. Fiquei muito tempo sem fazer as aulas então não sei o que pode acontecer se tirar isso daqui rs
 
 import App from './App';
 

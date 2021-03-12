@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { ADD_VIDEO } from '../../redux-flow/reducers/videos/actions';
+import { registerVideo } from '../../redux-flow/reducers/videos/actions-creators';
 
 const RegisterVideo = ({ onSubmit }) => (
   <Form onSubmit={onSubmit}>
@@ -22,15 +22,18 @@ const Form = styled.form`
 `
 
 const mapDispatchToProps = (dispatch) => ({
-  onSubmit: (e) => {
+  onSubmit: async (e) => {
     e.preventDefault()
-    dispatch({
-      type: ADD_VIDEO,
-      payload: {
-        id: 'jujuba',
-        title: 'Um video sobre jujubas'
-      }
-    })
+    e.persist()
+
+    const {
+      id: { value: id},
+      title: { value: title}
+    } = e.target
+
+    await dispatch( registerVideo({ id, title}) )
+    e.target.reset()
+    e.target[0].focus()
   }
 })
 
