@@ -24,7 +24,7 @@ class App extends PureComponent {
   }
 
   render () {
-    const { isRegisterVideoFormOpened } = this.props;
+    const { isRegisterVideoFormOpened, videoSingleId, videos } = this.props;
 
     return (
       <Container>
@@ -33,7 +33,7 @@ class App extends PureComponent {
 
         <Main>
           {isRegisterVideoFormOpened && <RegisterVideo />}
-          <VideoSingle />
+          {videoSingleId && <VideoSingle id={videoSingleId} title={videos[videoSingleId].title} />}
           <VideosList />
         </Main>
 
@@ -49,7 +49,9 @@ const Main = styled.main`
   min-height: calc(100% - ${headerHeight} - ${footerHeight});
 `
 const mapStateToProps = (state) => ({
-  isRegisterVideoFormOpened: state.ui.isRegisterVideoFormOpened
+  isRegisterVideoFormOpened: state.ui.isRegisterVideoFormOpened,
+  videoSingleId: state.videoSingleId,
+  videos: state.videos
 })
 
 const mapDispatchToProps = { fetchVideos }
