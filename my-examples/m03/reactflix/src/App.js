@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import styled, { createGlobalStyle } from 'styled-components';
 import { headerHeight, footerHeight } from './utils/constants';
 import Header from './components/header'
@@ -16,13 +17,13 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-const App = () => (
+const App = ({ isRegisterVideoFormOpened }) => (
   <Container>
     <GlobalStyle />
     <Header />
 
     <Main>
-      <RegisterVideo />
+      {isRegisterVideoFormOpened && <RegisterVideo />}
       <VideoSingle />
       <VideosList />
     </Main>
@@ -38,7 +39,9 @@ const Container = styled.div``
 const Main = styled.main`
   min-height: calc(100% - ${headerHeight} - ${footerHeight});
 `
+const mapStateToProps = (state) => ({
+  isRegisterVideoFormOpened: state.ui.isRegisterVideoFormOpened
+})
 
 
-
-export default App;
+export default connect(mapStateToProps)(App);

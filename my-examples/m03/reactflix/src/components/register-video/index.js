@@ -2,8 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { registerVideo } from '../../redux-flow/reducers/videos/actions-creators';
+import { closeRegisterVideo } from '../../redux-flow/reducers/ui/actions-creators';
 
-const RegisterVideo = ({ onSubmit }) => (
+const RegisterVideo = ({ onSubmit, onCloseRegisterVideo }) => (
   <Form onSubmit={onSubmit}>
     <h2>Cadastrar vídeo:</h2>
 
@@ -14,7 +15,7 @@ const RegisterVideo = ({ onSubmit }) => (
     <input type="text" id="title" name="title"/>
 
     <button type="submit">Cadastrar</button>
-    <ButtonClose type="button">&times;</ButtonClose>
+    <ButtonClose onClick={onCloseRegisterVideo} type="button">&times;</ButtonClose>
   </Form>
 );
 
@@ -49,7 +50,9 @@ const mapDispatchToProps = (dispatch) => ({
     await dispatch( registerVideo({ id, title}) )
     e.target.reset()
     e.target[0].focus()
-  }
+  },
+
+  onCloseRegisterVideo: () => dispatch(closeRegisterVideo())
 })
 
 export default connect(null, mapDispatchToProps)(RegisterVideo)

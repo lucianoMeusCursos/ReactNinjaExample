@@ -1,11 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { headerHeight } from './../utils/constants';
+import { openRegisterVideo } from '../redux-flow/reducers/ui/actions-creators';
 
-const MainHeader = () => (
+const MainHeader = ({ onOpenRegisterVideo }) => (
   <Header>
     <HeaderTitle>ReactFlix</HeaderTitle>
-    <RegisterButton>Cadastrar vídeo</RegisterButton>
+    <RegisterButton onClick={onOpenRegisterVideo}>Cadastrar vídeo</RegisterButton>
   </Header>
 )
 
@@ -27,4 +29,8 @@ const RegisterButton = styled.button`
   margin-bottom: 0;
 `
 
-export default MainHeader
+const mapDispatchToProps = (dispatch) => ({
+  onOpenRegisterVideo: () => dispatch(openRegisterVideo())
+})
+
+export default connect(null, mapDispatchToProps)(MainHeader)
