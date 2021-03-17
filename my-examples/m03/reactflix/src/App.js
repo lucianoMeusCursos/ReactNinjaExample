@@ -4,8 +4,8 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { headerHeight, footerHeight } from './utils/constants';
 import Header from './components/header'
 import Footer from './components/footer'
-import VideosList from './components/videos-list';
-import VideoSingle from './components/video-single.js';
+import VideosList from './components/video-list';
+import VideoSingle from './components/video-single';
 import RegisterVideo from './components/register-video';
 import { fetchVideos } from './redux-flow/reducers/videos/actions-creators';
 

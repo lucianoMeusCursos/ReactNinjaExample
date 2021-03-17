@@ -2,21 +2,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import Play from '../play';
+import Play from './play';
 
-const VideosList = ({ videos }) => (
+const VideosList = ({ videos, handleClick }) => (
   <Container>
     {Object.keys(videos).map((id) => (
       <Video key={id}>
-        <VideoThumb>
-          <PlayStyled />
-        </VideoThumb>
-        <VideoTitle>{videos[id].title}</VideoTitle>
+        <VideoLink href="#" onClick={ handleClick(id) }>
+          <VideoThumb>
+            <PlayStyled />
+          </VideoThumb>
+          <VideoTitle>{videos[id].title}</VideoTitle>
+        </VideoLink>
       </Video>
     ))}
   </Container>
 )
-
 
 const PlayStyled = styled(Play)`
   fill: #999;
@@ -30,6 +31,9 @@ const Video = styled.section`
     transform: scale(1.5);
   }
 `
+const VideoLink = styled.a`
+  color: inherit;
+`
 
 const Container = styled.div`
   display: flex;
@@ -41,8 +45,6 @@ const Container = styled.div`
     margin: 0 5px 5px;
   }
 `
-
-
 const VideoThumb = styled.div`
   border: solid 1px #999;
   display: flex;
@@ -50,7 +52,6 @@ const VideoThumb = styled.div`
   align-items: center;
   height: 150px;
 `
-
 
 const VideoTitle = styled.h2`
   font-size: 18px;
@@ -61,4 +62,12 @@ const mapStateToProps = (state) => ({
 
 })
 
-export default connect(mapStateToProps)(VideosList)
+const mapDistpatchToProps = (dispatch) => ({
+  handleClick: (id) => (e) => {
+    e.preventDefault()
+    console.log(id)
+
+  }
+})
+
+export default connect(mapStateToProps, mapDistpatchToProps)(VideosList)
