@@ -3,15 +3,19 @@ import { BrowserRouter, Link, Route } from "react-router-dom";
 function App() {
   return (
     <BrowserRouter>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/sobre">Sobre</Link></li>
-        <li><Link to="/blog">Blog</Link></li>
-      </ul>
+      <div>
+        <Route path="/" exact component={Home} />
+        <Route path="/sobre" component={Sobre} />
+        <Route path="/blog" component={Blog} />
 
-      <Route path="/" exact component={Home} />
-      <Route path="/sobre" component={Sobre} />
-      <Route path="/blog" component={Blog} />
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/sobre">Sobre</Link></li>
+          <li><Link to="/blog">Blog</Link></li>
+        </ul>
+
+
+      </div>
 
     </BrowserRouter>
   );
@@ -37,12 +41,12 @@ const Blog = () => (
   </div>
 )
 
-const NoPost = () => (
-  <h2>Selecione um post</h2>
-)
-
 const Post = ({ match }) => (
   <h2>Post: {match.params.post}</h2>
+)
+
+const NoPost = () => (
+  <h2>Selecione um post</h2>
 )
 
 
