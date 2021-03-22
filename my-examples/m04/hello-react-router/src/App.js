@@ -52,8 +52,8 @@ const Blog = () => (
     </ul>
 
     <Switch>
-      <Route exact to="/blog" component={NoPost} />
-      <Route path="/blog/:post(post-1|post-2)" component={Post} />
+      <Route exact to="/blog" render={ () => <NoPosts numberOfPost={2}/>} />
+      <Route path='/blog/:post(post-[12])' component={Post} />
       <Route component={Post404} />
     </Switch>
   </div>
@@ -63,15 +63,14 @@ const Post404 = () => (
   <h1>Esse post não existe</h1>
 )
 
-const Post = ({ match }) => (
+const Post = ({match}) => (
   <div>
-    {console.log(match)}
     <h2>Post: {match.params.post}</h2>
   </div>
 )
 
-const NoPost = () => (
-  <h2>Selecione um post</h2>
+const NoPosts = ({ numberOfPost }) => (
+  <h2>Selecione um dos {numberOfPost} post</h2>
 )
 
 
