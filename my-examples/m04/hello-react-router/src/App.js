@@ -24,9 +24,15 @@ function App() {
           <Route component={Error404} />
         </Switch>
 
-
+        <Route path='/sobre'>
+          {({ match }) => (
+            <pre>
+              {console.log('Estou na página sobre', match)}
+              Estou na página sobre ! {`${!!match}`}
+            </pre>
+          )}
+        </Route>
       </div>
-
     </BrowserRouter>
   );
 }
