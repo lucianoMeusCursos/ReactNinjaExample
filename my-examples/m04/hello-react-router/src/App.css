@@ -1,8 +1,11 @@
+body {
+  font: 30px sans-serif;
+}
+
 a {
   text-decoration: none;
-
 }
-.active {
+
+.active-link {
   text-decoration: underline;
-  font-size: 2rem;
 }
