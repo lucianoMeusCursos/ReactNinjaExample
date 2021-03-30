@@ -1,4 +1,4 @@
-import  { PureComponent } from 'react';
+import { PureComponent } from 'react'
 
 class ErrorBoundary extends PureComponent {
   state = { hasError: false }
@@ -14,7 +14,7 @@ class ErrorBoundary extends PureComponent {
   }
 
   render () {
-    return this.props.children(this.state.hasError);
+    return this.props.children(this.state.hasError)
   }
 }
 

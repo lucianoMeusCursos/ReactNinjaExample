@@ -1,9 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './app';
-import reportWebVitals from './reportWebVitals';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './app'
+import reportWebVitals from './reportWebVitals'
 
-import ErrorBoundary from './error';
+import ErrorBoundary from './error'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -14,6 +14,6 @@ ReactDOM.render(
     </ErrorBoundary>
   </React.StrictMode>,
   document.getElementById('root')
-);
+)
 
-reportWebVitals();
+reportWebVitals()
