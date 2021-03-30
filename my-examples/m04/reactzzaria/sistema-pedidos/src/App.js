@@ -1,32 +1,51 @@
-import React, { Suspense } from 'react';
+import React, { Component } from 'react';
 
 import './App.css';
+import logo from './logo.svg';
 
-const Img = React.lazy(() => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(import('./img'))
-    }, 5000)
-  })
-})
+class App extends Component {
+  state = {
+    products: []
+  }
 
-const P = React.lazy(() => import('./p'))
-const A = React.lazy(() => import('./a'))
+  handleClick = (e) => {
+    e.preventDefault()
+    const result = {}
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <Suspense fallback={<h1>CARREGANDO...</h1>}>
-          <Img />
-        </Suspense>
-        <Suspense fallback={<h1>Aqui é o P E a</h1>}>
-          <P />
-          <A />
-        </Suspense>
-      </header>
-    </div>
-  );
+    console.log('clicou');
+
+    this.setState({
+      products: result
+    })
+  }
+
+  render () {
+    const { hasError } = this.props
+    return (
+      <div className="App">
+        <header className="App-header">
+          {hasError && <h1>Deu problema :-(</h1>}
+          <img src={logo} className="App-logo" alt="logo" />
+          <p>
+            Edit <code>src/App.js</code> and save to reload.
+          </p>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={this.handleClick}
+          >
+            Obter produtos
+          </a>
+        </header>
+        {this.state.products.map((prod) => (
+          <div key={prod}>{prod}</div>
+        ))}
+      </div>
+    )
+  }
 }
+
 
 export default App;

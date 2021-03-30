@@ -4,9 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import ErrorBoundary from './error';
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ErrorBoundary>
+      {(hasError) => (
+        <App hasError={hasError} />
+      )}
+    </ErrorBoundary>
   </React.StrictMode>,
   document.getElementById('root')
 );
