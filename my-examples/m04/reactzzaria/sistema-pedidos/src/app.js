@@ -1,5 +1,16 @@
 import React from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-const App = () => (<h1>Olá</h1>)
+import { MainPage } from './pages/main'
+import { Login } from './pages/login'
+
+const App = () => (
+  <BrowserRouter>
+    <Switch>
+      <Route path='/' component={MainPage} exact />
+      <Route path='/login' component={Login} exact />
+    </Switch>
+  </BrowserRouter>
+)
 
 export default App
