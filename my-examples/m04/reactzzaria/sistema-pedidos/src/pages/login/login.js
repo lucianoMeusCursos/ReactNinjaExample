@@ -10,12 +10,13 @@ const Login = () => (
       container
       direction='column'
       justify='center'
+      spacing={40}
     >
-      <Grid item xs={12}>
+      <Grid item>
         <Logo />
       </Grid>
 
-      <Grid item xs={12}>
+      <Grid item xs={12} container justify='center'>
         <GithubButton>
           Entra com Github
         </GithubButton>
