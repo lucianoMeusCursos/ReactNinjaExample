@@ -17,9 +17,9 @@
     "web-vitals": "1.0.1"
   },
   "scripts": {
-    "dev": "rescripts start",
-    "build": "rescripts build",
-    "test": "rescripts test",
+    "dev": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
     "lint:fix": "standard --fix --parser babel-eslint | snazzy"
   },
   "eslintConfig": {
@@ -54,11 +54,6 @@
     ]
   },
   "devDependencies": {
-    "@rescripts/cli": "0.0.16",
-    "@rescripts/rescript-env": "0.0.14",
-    "@rescripts/rescript-use-babel-config": "0.0.12",
-    "@rescripts/rescript-use-eslint-config": "0.0.11",
-    "@rescripts/rescript-use-tslint-config": "0.0.7",
     "babel-eslint": "10.1.0",
     "eslint-config-standard": "16.0.2",
     "eslint-config-standard-jsx": "10.0.0",
