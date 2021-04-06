@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import firebase from 'firebase/app'
+import 'firebase/auth'
 
 import { Button, Grid } from '@material-ui/core'
 import { ReactComponent as MainLogo } from './logo-react-zzaria.svg'
@@ -29,7 +30,11 @@ const Login = () => (
       </Grid>
 
       <Grid item xs={12} container justify='center'>
-        <GithubButton>
+        <GithubButton onClick={() => {
+          const provider = new firebase.auth.GithubAuthProvider()
+          firebase.auth().signInWithRedirect(provider)
+        }}
+        >
           Entra com Github
         </GithubButton>
       </Grid>
