@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 import firebase from 'firebase/app'
 import 'firebase/auth'
@@ -18,29 +18,43 @@ const config = {
 
 firebase.initializeApp(config)
 
-const Login = () => (
-  <Container>
-    <Grid
-      container
-      justify='center'
-      spacing={10}
-    >
-      <Grid item>
-        <Logo />
-      </Grid>
+class Login extends PureComponent {
+  componentDidMount () {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        console.log('usuario logado', user)
+      } else {
+        console.log('usuario não logado', user)
+      }
+    })
+  }
 
-      <Grid item xs={12} container justify='center'>
-        <GithubButton onClick={() => {
-          const provider = new firebase.auth.GithubAuthProvider()
-          firebase.auth().signInWithRedirect(provider)
-        }}
+  render () {
+    return (
+      <Container>
+        <Grid
+          container
+          justify='center'
+          spacing={10}
         >
-          Entra com Github
-        </GithubButton>
-      </Grid>
-    </Grid>
-  </Container>
-)
+          <Grid item>
+            <Logo />
+          </Grid>
+
+          <Grid item xs={12} container justify='center'>
+            <GithubButton onClick={() => {
+              const provider = new firebase.auth.GithubAuthProvider()
+              firebase.auth().signInWithRedirect(provider)
+            }}
+            >
+              Entra com Github
+            </GithubButton>
+          </Grid>
+        </Grid>
+      </Container>
+    )
+  }
+}
 
 const Container = styled.div`
   padding: 20px;
