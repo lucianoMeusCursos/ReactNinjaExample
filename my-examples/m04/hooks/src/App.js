@@ -47,7 +47,7 @@ function CounterFunction () {
 
   useEffect(() => {
     document.title = `CounterFunction: ${counter}`;
-  })
+  },[counter])
 
   return (
     <>
