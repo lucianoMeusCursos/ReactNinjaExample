@@ -52,19 +52,20 @@ function useCount () {
   return [counter, setCounter]
 }
 
-function UserDidMount (callback) {
-  useEffect(callback, [])
-}
-
 function CounterFunction () {
   const [counter, setCounter] = useCount(0)
 
-  UserDidMount(() => {
+  useEffect(() => {
     console.log('Simulando componentDidMount')
-    setInterval(() => {
+    const timer = setInterval(() => {
       setCounter((counter) => counter + 1)
     }, 1000)
-  })
+
+    return () => {
+      console.log('limpou useEffect')
+      clearInterval(timer)
+    }
+  }, [counter])
 
   return (
     <>
