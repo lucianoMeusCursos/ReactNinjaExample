@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import firebase from 'firebase/app'
 import 'firebase/auth'
@@ -18,69 +18,67 @@ const config = {
 
 firebase.initializeApp(config)
 
-class Login extends PureComponent {
-  state = {
+const handleLogin = () => {
+  const provider = new firebase.auth.GithubAuthProvider()
+  firebase.auth().signInWithRedirect(provider)
+}
+
+function Login () {
+  const [userInfo, setUserInfo] = useState({
     isUserLoggedIn: false,
     user: null
-  }
+  })
 
-  componentDidMount () {
+  const { isUserLoggedIn, user } = userInfo
+
+  useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       console.log('dados do usuário', user)
-      this.setState({
+      setUserInfo({
         isUserLoggedIn: !!user,
         user
       })
     })
-  }
+  }, [])
 
-  handleLogin () {
-    const provider = new firebase.auth.GithubAuthProvider()
-    firebase.auth().signInWithRedirect(provider)
-  }
-
-  handleLogout = () => {
+  const handleLogout = () => {
     firebase.auth().signOut().then(() => {
       console.log('Deslogou')
-      this.setState({
+      setUserInfo({
         isUserLoggedIn: false,
         user: null
       })
     })
   }
 
-  render () {
-    const { isUserLoggedIn, user } = this.state
-
-    return (
-      <Container>
-        <Grid
-          container
-          justify='center'
-          spacing={10}
-        >
-          <Grid item>
-            <Logo />
-          </Grid>
-
-          <Grid item xs={12} container justify='center'>
-            {isUserLoggedIn && (
-              <>
-                <pre>{user.displayName}</pre>
-                <Button variant='contained' onClick={this.handleLogout}>Sair</Button>
-              </>
-            )}
-
-            {!isUserLoggedIn && (
-              <GithubButton onClick={this.handleLogin}>
-                Entra com Github
-              </GithubButton>
-            )}
-          </Grid>
+  return (
+    <Container>
+      <Grid
+        container
+        justify='center'
+        spacing={10}
+      >
+        <Grid item>
+          <Logo />
         </Grid>
-      </Container>
-    )
-  }
+
+        <Grid item xs={12} container justify='center'>
+          {isUserLoggedIn && (
+            <>
+              <pre>{user.displayName}</pre>
+              <Button variant='contained' onClick={handleLogout}>Sair</Button>
+            </>
+          )}
+
+          {!isUserLoggedIn && (
+            <GithubButton onClick={handleLogin}>
+              Entra com Github
+            </GithubButton>
+          )}
+        </Grid>
+      </Grid>
+    </Container>
+  )
 }
 
 const Container = styled.div`
