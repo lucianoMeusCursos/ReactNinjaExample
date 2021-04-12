@@ -1,23 +1,23 @@
 import React, { lazy, Suspense } from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { CssBaseline, LinearProgress } from '@material-ui/core'
+import { Route, Switch } from 'react-router-dom'
+import { LinearProgress } from '@material-ui/core'
 
 // Fazendo o import dinâmico.
 const MainPage = lazy(() => import('pages/main'))
 const Login = lazy(() => import('pages/login'))
 
-const App = () => (
-  <>
-    <CssBaseline />
-    <BrowserRouter>
-      <Suspense fallback={<LinearProgress />}>
-        <Switch>
-          <Route path='/login' component={Login} />
-          <Route component={MainPage} />
-        </Switch>
-      </Suspense>
-    </BrowserRouter>
-  </>
-)
+function App () {
+  return (
+    // Suspense faz parte do import dinâmico
+    // é nele que precisamos colocar como filho
+    // os componentes que queremos dinâmicos.
+    <Suspense fallback={<LinearProgress />}>
+      <Switch>
+        <Route path='/login' component={Login} />
+        <Route component={MainPage} />
+      </Switch>
+    </Suspense>
+  )
+}
 
 export default App
