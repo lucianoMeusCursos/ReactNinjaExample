@@ -1,11 +1,15 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useContext } from 'react'
 import styled from 'styled-components'
 import firebase from 'services/firebase'
+
+import { AuthContext } from 'contexts/auth'
 
 import { Button, Grid } from '@material-ui/core'
 import { ReactComponent as MainLogo } from './logo-react-zzaria.svg'
 
 function Login () {
+  const { handleLogin } = useContext(AuthContext)
+
   const [userInfo, setUserInfo] = useState({
     isUserLoggedIn: false,
     user: null
@@ -21,11 +25,6 @@ function Login () {
         user
       })
     })
-  }, [])
-
-  const handleLogin = useCallback(() => {
-    const provider = new firebase.auth.GithubAuthProvider()
-    firebase.auth().signInWithRedirect(provider)
   }, [])
 
   const handleLogout = useCallback(() => {
