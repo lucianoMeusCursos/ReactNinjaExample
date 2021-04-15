@@ -29,35 +29,26 @@ function App ({ location }) {
     window.logout = logout
   }, [])
 
+  // Se usuário esta logado ou não. Enquanto isso mostra loading
   if (!didCheckUserIn) {
-    console.log('ainda não checou se o usuário está logado ou não')
     return <LinearProgress />
   }
 
-  console.log('já chegou se usuário está logado ou não')
+  // Se usuário estiver logado e na página de login
+  if (isUserLoggedIn && location.pathname === '/login') {
+    return <Redirect to='/' />
+  }
 
-  if (isUserLoggedIn) {
-    console.log('usuário está logado')
-    if (location.pathname === '/login') {
-      console.log('logado e na página de login')
-      return <Redirect to='/' />
-    } else {
-      console.log('logado MAS NÃO está na página de login')
-    }
-  } else {
-    console.log('não está logado')
-    if (location.pathname !== '/login') {
-      return <Redirect to='/login' />
-    } else {
-      console.log('usuário não está logado e na página de login')
-    }
+  // Se usuário não estiver logado e não estiver na página de login
+  if (!isUserLoggedIn && location.pathname !== '/login') {
+    return <Redirect to='/login' />
   }
 
   return (
     // Suspense faz parte do import dinâmico
     // é nele que precisamos colocar como filho
     // os componentes que queremos dinâmicos.
-    <Suspense>
+    <Suspense fallback={<LinearProgress />}>
       <Switch>
         <Route path='/login' component={Login} />
         <Route component={MainPage} />
