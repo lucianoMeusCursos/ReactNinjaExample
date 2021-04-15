@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect, useContext } from 'react'
+import React, { lazy, Suspense, useContext, useEffect, useState } from 'react'
 import t from 'prop-types'
 import { Route, Redirect, Switch } from 'react-router-dom'
 import { LinearProgress } from '@material-ui/core'
@@ -12,8 +12,9 @@ const MainPage = lazy(() => import('pages/main'))
 const Login = lazy(() => import('pages/login'))
 
 function App ({ location }) {
-  const { userInfo, setUserInfo } = useContext(AuthContext)
+  const { userInfo, setUserInfo, logout } = useContext(AuthContext)
   const { isUserLoggedIn } = userInfo
+  const [didCheckUserIn, setDidCheckUserIn] = useState(false)
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
@@ -22,8 +23,18 @@ function App ({ location }) {
         isUserLoggedIn: !!user,
         user
       })
+      setDidCheckUserIn(true)
     })
+
+    window.logout = logout
   }, [])
+
+  if (!didCheckUserIn) {
+    console.log('ainda não checou se o usuário está logado ou não')
+    return <LinearProgress />
+  }
+
+  console.log('já chegou se usuário está logado ou não')
 
   if (isUserLoggedIn) {
     console.log('usuário está logado')
@@ -46,7 +57,7 @@ function App ({ location }) {
     // Suspense faz parte do import dinâmico
     // é nele que precisamos colocar como filho
     // os componentes que queremos dinâmicos.
-    <Suspense fallback={<LinearProgress />}>
+    <Suspense>
       <Switch>
         <Route path='/login' component={Login} />
         <Route component={MainPage} />
