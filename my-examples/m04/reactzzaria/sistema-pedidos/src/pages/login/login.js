@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { AuthContext } from 'contexts/auth'
 
 import { Button, Grid } from '@material-ui/core'
-import { ReactComponent as MainLogo } from './logo-react-zzaria.svg'
+import { ReactComponent as MainLogo } from 'images/logo-react-zzaria.svg'
 
 function Login () {
   const { login } = useContext(AuthContext)
