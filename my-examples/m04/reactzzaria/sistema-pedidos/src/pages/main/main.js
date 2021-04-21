@@ -40,7 +40,7 @@ const Main = () => {
           <AccountCircle />
         </IconButton>
 
-        <Menu open={anchorElement} onClose={handleClose} anchorEl={anchorElement}>
+        <Menu open={!!anchorElement} onClose={handleClose} anchorEl={anchorElement}>
           <MenuItem onClick={logout}>Sair</MenuItem>
         </Menu>
       </Toolbar>
