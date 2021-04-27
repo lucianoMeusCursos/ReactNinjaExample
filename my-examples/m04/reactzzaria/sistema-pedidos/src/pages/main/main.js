@@ -1,20 +1,19 @@
-import React, { useContext, useState } from 'react'
-import t from 'prop-types'
+import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
 import {
   AppBar,
+  Divider as MaterialDivider,
   Grid,
   IconButton,
   Menu,
   MenuItem,
+  Paper,
   Toolbar as MaterialToolbar,
   Typography,
-  Paper,
   withStyles
 } from '@material-ui/core'
 import { AccountCircle } from '@material-ui/icons'
 import { ReactComponent as MainLogo } from 'images/logo-react-zzaria.svg'
-
 import { AuthContext } from 'contexts/auth'
 
 const Main = () => {
@@ -26,13 +25,12 @@ const Main = () => {
     setAnchorElement(e.target)
   }
 
-  const handleClose = (e) => {
+  const handleClose = () => {
     setAnchorElement(null)
   }
 
   return (
     <>
-
       <AppBar>
         <Toolbar>
           <LogoContainer>
@@ -40,14 +38,18 @@ const Main = () => {
           </LogoContainer>
 
           <Typography color='inherit'>
-            Olá {userName}
+            Olá {userName} =)
           </Typography>
 
           <IconButton color='inherit' onClick={handleOpenMenu}>
             <AccountCircle />
           </IconButton>
 
-          <Menu open={!!anchorElement} onClose={handleClose} anchorEl={anchorElement}>
+          <Menu
+            open={Boolean(anchorElement)}
+            onClose={handleClose}
+            anchorEl={anchorElement}
+          >
             <MenuItem onClick={logout}>Sair</MenuItem>
           </Menu>
         </Toolbar>
@@ -57,26 +59,30 @@ const Main = () => {
 
       <Content>
         <Grid container direction='column' alignItems='center'>
-          <Typography variant='h3'>
-            O que vai ser {userName} ;-)
-          </Typography>
-          <Typography variant='h4'>
-            Escolha o tamanho da pizza:
+          <Typography variant='h3' gutterBottom>
+            O que vai ser hoje, {userName}? =)
           </Typography>
 
-          <Grid container spacing={16}>
-            {pizzaSizes.map((pizza) => (
-              <Grid item key={pizza.id} xs={4}>
-                <Paper style={{ padding: 20 }}>
-                  <div>{pizza.size}cm</div>
-                  <Typography>{pizza.name}</Typography>
-                  <Typography>
-                    {pizza.slices} fatias, {pizza.flavours} sabores
-                  </Typography>
-                </Paper>
-              </Grid>
-            ))}
-          </Grid>
+          <Typography variant='h4' gutterBottom>
+            Escolha o tamanho da pizza:
+          </Typography>
+        </Grid>
+
+        <Grid container spacing={16}>
+          {pizzaSizes.map((pizza) => (
+            <Grid item key={pizza.id} xs={4}>
+              <PaperPizza>
+                <div>{pizza.size}cm</div>
+
+                <Divider />
+
+                <Typography variant='h5'>{pizza.name}</Typography>
+                <Typography>
+                  {pizza.slices} fatias, {pizza.flavours} sabores
+                </Typography>
+              </PaperPizza>
+            </Grid>
+          ))}
         </Grid>
       </Content>
     </>
@@ -91,6 +97,7 @@ const pizzaSizes = [
     slices: 2,
     flavours: 1
   },
+
   {
     id: 1,
     name: 'Média',
@@ -98,6 +105,7 @@ const pizzaSizes = [
     slices: 6,
     flavours: 2
   },
+
   {
     id: 2,
     name: 'Grande',
@@ -107,10 +115,22 @@ const pizzaSizes = [
   }
 ]
 
-const Toolbar = styled(MaterialToolbar)`
+const Divider = styled(MaterialDivider)`
+  margin: 20px 0;
   width: 100%;
-  max-width: 960px;
+`
+
+const PaperPizza = styled(Paper)`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+`
+
+const Toolbar = styled(MaterialToolbar)`
   margin: 0 auto;
+  max-width: 960px;
+  width: 100%;
 `
 
 const LogoContainer = styled.div`
@@ -137,14 +157,9 @@ const Content = styled.main`
 const style = (theme) => ({
   main: theme.mixins.toolbar
 })
-const SpaceWrapper = ({ classes }) => (
+
+const Spacer = withStyles(style)(({ classes }) => (
   <div className={classes.main} />
-)
-
-const Spacer = withStyles(style)(SpaceWrapper)
-
-SpaceWrapper.propTypes = {
-  classes: t.object
-}
+))
 
 export default Main
