@@ -1,10 +1,12 @@
 import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 import {
+  Card,
+  CardActionArea as MaterialCardActionArea,
   Divider as MaterialDivider,
   Grid,
-  Paper,
   Typography
 } from '@material-ui/core'
 
@@ -29,20 +31,20 @@ const ChoosePizzaSize = () => {
       <PizzasGrid>
         {pizzaSizes.map((pizza) => (
           <Grid item key={pizza.id} xs>
-            <PaperPizza>
-              <Pizza>
-                <PizzaText>{pizza.size}cm</PizzaText>
-              </Pizza>
-
-              <Divider />
-
-              <Typography variant='h5'>{pizza.name}</Typography>
-              <Typography>
-                {pizza.slices} fatias, {' '}
-                {pizza.flavours} {' '}
-                {singularOrPlural(pizza.flavours, 'sabor', 'sabores')}
-              </Typography>
-            </PaperPizza>
+            <Card>
+              <CardActionArea to='/sabores-da-pizza'>
+                <Pizza>
+                  <PizzaText>{pizza.size}cm</PizzaText>
+                </Pizza>
+                <Divider />
+                <Typography variant='h5'>{pizza.name}</Typography>
+                <Typography>
+                  {pizza.slices} fatias, {' '}
+                  {pizza.flavours} {' '}
+                  {singularOrPlural(pizza.flavours, 'sabor', 'sabores')}
+                </Typography>
+              </CardActionArea>
+            </Card>
           </Grid>
         ))}
       </PizzasGrid>
@@ -71,7 +73,9 @@ const PizzasGrid = styled(Grid).attrs({
   padding: 20px;
 `
 
-const PaperPizza = styled(Paper)`
+const CardActionArea = styled(MaterialCardActionArea).attrs({
+  component: Link
+})`
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -81,12 +85,14 @@ const PaperPizza = styled(Paper)`
 
 const Pizza = styled.div`
   align-items: center;
+  background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 50%;
   display: flex;
   height: 200px;
   justify-content: center;
   position: relative;
+  z-index: 2;
   width: 200px;
 
   &::before,
