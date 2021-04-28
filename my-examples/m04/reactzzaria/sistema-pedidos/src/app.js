@@ -12,7 +12,7 @@ const MainPage = lazy(() => import('pages/main'))
 const Login = lazy(() => import('pages/login'))
 
 function App ({ location }) {
-  const { userInfo, setUserInfo, logout } = useContext(AuthContext)
+  const { userInfo, setUserInfo } = useContext(AuthContext)
   const { isUserLoggedIn } = userInfo
   const [didCheckUserIn, setDidCheckUserIn] = useState(false)
 
@@ -28,8 +28,6 @@ function App ({ location }) {
       })
       setDidCheckUserIn(true)
     })
-
-    window.logout = logout
   }, [])
 
   // Se usuário esta logado ou não. Enquanto isso mostra loading
