@@ -28,7 +28,7 @@ function App ({ location }) {
       })
       setDidCheckUserIn(true)
     })
-  }, [])
+  }, [setUserInfo])
 
   // Se usuário esta logado ou não. Enquanto isso mostra loading
   if (!didCheckUserIn) {
