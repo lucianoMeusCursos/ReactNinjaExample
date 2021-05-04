@@ -7,6 +7,8 @@ import firebase from 'services/firebase'
 
 import { AuthContext } from 'contexts/auth'
 
+import { HOME, LOGIN } from 'routes'
+
 // Fazendo o import dinâmico.
 const MainPage = lazy(() => import('pages/main'))
 const Login = lazy(() => import('pages/login'))
@@ -36,13 +38,13 @@ function App ({ location }) {
   }
 
   // Se usuário estiver logado e na página de login
-  if (isUserLoggedIn && location.pathname === '/login') {
-    return <Redirect to='/' />
+  if (isUserLoggedIn && location.pathname === LOGIN) {
+    return <Redirect to={HOME} />
   }
 
   // Se usuário não estiver logado e não estiver na página de login
-  if (!isUserLoggedIn && location.pathname !== '/login') {
-    return <Redirect to='/login' />
+  if (!isUserLoggedIn && location.pathname !== LOGIN) {
+    return <Redirect to={LOGIN} />
   }
 
   return (
@@ -51,7 +53,7 @@ function App ({ location }) {
     // os componentes que queremos dinâmicos.
     <Suspense fallback={<LinearProgress />}>
       <Switch>
-        <Route path='/login' component={Login} />
+        <Route path={LOGIN} component={Login} />
         <Route component={MainPage} />
       </Switch>
     </Suspense>

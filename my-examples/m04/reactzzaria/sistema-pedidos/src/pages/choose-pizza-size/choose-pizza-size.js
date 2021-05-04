@@ -2,6 +2,8 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
+import { CHOOSE_PIZZA_FLAVOURS } from 'routes'
+
 import {
   Card,
   CardActionArea as MaterialCardActionArea,
@@ -33,7 +35,7 @@ const ChoosePizzaSize = () => {
           <Grid item key={pizza.id} xs>
             <Card>
               <CardActionArea to={{
-                pathname: '/sabores-da-pizza',
+                pathname: CHOOSE_PIZZA_FLAVOURS,
                 state: pizza
               }}
               >

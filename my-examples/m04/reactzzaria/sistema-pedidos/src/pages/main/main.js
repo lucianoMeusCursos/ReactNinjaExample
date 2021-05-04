@@ -3,6 +3,8 @@ import { Switch, Route } from 'react-router-dom'
 import styled from 'styled-components'
 import { withStyles } from '@material-ui/core'
 
+import { HOME, CHOOSE_PIZZA_FLAVOURS } from 'routes'
+
 import Header from './header'
 
 const ChoosePizzaSize = React.lazy(
@@ -21,8 +23,8 @@ const Main = () => (
     <Content>
       <Suspense fallback='Loading...'>
         <Switch>
-          <Route path='/' exact component={ChoosePizzaSize} />
-          <Route path='/sabores-da-pizza' component={ChoosePizzaSizeFlavours} />
+          <Route path={HOME} exact component={ChoosePizzaSize} />
+          <Route path={CHOOSE_PIZZA_FLAVOURS} component={ChoosePizzaSizeFlavours} />
         </Switch>
       </Suspense>
     </Content>
