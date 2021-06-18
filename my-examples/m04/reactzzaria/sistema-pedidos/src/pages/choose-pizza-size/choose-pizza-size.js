@@ -12,23 +12,26 @@ import {
   Typography
 } from '@material-ui/core'
 
+import { HeaderContent, H3, H4 } from 'ui'
+
 import { AuthContext } from 'contexts/auth'
 import pizzaSizes from 'fake-data/pizzas-sizes'
+import { singularOrPlural } from 'utils'
 
 const ChoosePizzaSize = () => {
   const { userInfo } = useContext(AuthContext)
 
   return (
     <>
-      <Grid container direction='column' alignItems='center'>
-        <Title variant='h3'>
+      <HeaderContent>
+        <H3>
           O que vai ser hoje, {userInfo.user.firstName}? =)
-        </Title>
+        </H3>
 
-        <Title variant='h4'>
+        <H4>
           Escolha o tamanho da pizza:
-        </Title>
-      </Grid>
+        </H4>
+      </HeaderContent>
 
       <PizzasGrid>
         {pizzaSizes.map((pizza) => (
@@ -60,19 +63,10 @@ const ChoosePizzaSize = () => {
   )
 }
 
-function singularOrPlural (amount, singular, plural) {
-  return amount === 1 ? singular : plural
-}
-
 const Divider = styled(MaterialDivider)`
   margin: 20px 0;
   width: 100%;
 `
-
-const Title = styled(Typography).attrs({
-  gutterBottom: true,
-  align: 'center'
-})``
 
 const PizzasGrid = styled(Grid).attrs({
   container: true,
