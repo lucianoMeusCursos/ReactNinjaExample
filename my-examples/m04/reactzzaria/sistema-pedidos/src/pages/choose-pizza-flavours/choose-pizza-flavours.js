@@ -7,7 +7,7 @@ import {
   Grid,
   Typography
 } from '@material-ui/core'
-import { Divider, HeaderContent, H3, PizzasGrid } from 'ui'
+import { CardLink, Divider, HeaderContent, H3, PizzasGrid } from 'ui'
 import { singularOrPlural } from 'utils'
 import { HOME } from 'routes'
 
@@ -31,10 +31,13 @@ const ChoosePizzaFlavours = ({ location }) => {
         {pizzaFlavours.map((pizza) => (
           <Grid item key={pizza.id} xs>
             <Card>
-              <Img src={pizza.image} alt={pizza.name} />
-              <Divider />
-              <Typography>{pizza.name}</Typography>
-              <Typography variant='h5'>{pizza.value[id]}</Typography>
+              <Label>
+                <input type='checkbox' />
+                <Img src={pizza.image} alt={pizza.name} />
+                <Divider />
+                <Typography>{pizza.name}</Typography>
+                <Typography variant='h5'>{pizza.value[id]}</Typography>
+              </Label>
             </Card>
           </Grid>
         ))}
@@ -46,6 +49,10 @@ const ChoosePizzaFlavours = ({ location }) => {
 const Img = styled.img`
   width: 200px;
 `
+
+const Label = styled(CardLink).attrs({
+  component: 'label'
+})``
 
 ChoosePizzaFlavours.propTypes = {
   location: t.object.isRequired
