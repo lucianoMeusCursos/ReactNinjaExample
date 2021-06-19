@@ -21,7 +21,7 @@ const pizzaFlavours = [
   },
   {
     id: 2,
-    image: '/fake-data/images/pizza-prestigio.png',
+    image: '/fake-data/images/pizza-prestigio.jpg',
     name: 'Prestígio',
     value: {
       0: 30,
