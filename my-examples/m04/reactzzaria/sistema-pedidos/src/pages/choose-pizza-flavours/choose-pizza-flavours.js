@@ -23,11 +23,17 @@ const ChoosePizzaFlavours = ({ location }) => {
   const { flavours, id } = location.state
 
   const handleChangeCheckBox = (pizzaId) => (e) => {
+    if (
+      checkboxesChecked(checkboxes).length === flavours &&
+      e.target.checked === true) {
+      return
+    }
+
     setCheckboxes((checkboxes) => {
       console.log('handleChangeCheckBox', checkboxes)
       return {
         ...checkboxes,
-        [pizzaId]: !checkboxes[pizzaId]
+        [pizzaId]: e.target.checked
       }
     })
   }
@@ -57,16 +63,20 @@ const ChoosePizzaFlavours = ({ location }) => {
   )
 }
 
-const Img = styled.img`
-  width: 200px;
-`
+ChoosePizzaFlavours.propTypes = {
+  location: t.object.isRequired
+}
+
+function checkboxesChecked (checkboxes) {
+  return Object.values(checkboxes).filter(Boolean)
+}
 
 const Label = styled(CardLink).attrs({
   component: 'label'
 })``
 
-ChoosePizzaFlavours.propTypes = {
-  location: t.object.isRequired
-}
+const Img = styled.img`
+  width: 200px;
+`
 
 export default ChoosePizzaFlavours
