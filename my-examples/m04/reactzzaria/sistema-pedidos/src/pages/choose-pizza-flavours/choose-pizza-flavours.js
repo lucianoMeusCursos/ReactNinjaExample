@@ -8,7 +8,7 @@ import {
   Typography
 } from '@material-ui/core'
 import { CardLink, Divider, HeaderContent, H3, PizzasGrid } from 'ui'
-import { singularOrPlural } from 'utils'
+import { singularOrPlural, toMoney } from 'utils'
 import { HOME } from 'routes'
 
 import pizzaFlavours from 'fake-data/pizzas-flavours'
@@ -56,7 +56,9 @@ const ChoosePizzaFlavours = ({ location }) => {
                 <Img src={pizza.image} alt={pizza.name} />
                 <Divider />
                 <Typography>{pizza.name}</Typography>
-                <Typography variant='h5'>{pizza.value[id]}</Typography>
+                <Typography variant='h5'>
+                  {toMoney(pizza.value[id])}
+                </Typography>
               </Label>
             </Card>
           </Grid>
