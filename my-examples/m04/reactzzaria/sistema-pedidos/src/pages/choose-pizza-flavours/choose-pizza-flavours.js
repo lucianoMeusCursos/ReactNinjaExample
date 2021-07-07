@@ -3,7 +3,7 @@ import t from 'prop-types'
 import { Redirect } from 'react-router-dom'
 import styled from 'styled-components'
 import {
-  Card,
+  Card as MaterialCard,
   Grid,
   Typography
 } from '@material-ui/core'
@@ -47,9 +47,12 @@ const ChoosePizzaFlavours = ({ location }) => {
       <PizzasGrid>
         {pizzaFlavours.map((pizza) => (
           <Grid item key={pizza.id} xs>
-            <Card>
+            <Card checked={!!checkboxes[pizza.id]}>
               <Label>
-                <input type='checkbox' checked={!!checkboxes[pizza.id]} onChange={handleChangeCheckBox(pizza.id)} />
+                <CheckBox
+                  checked={!!checkboxes[pizza.id]}
+                  onChange={handleChangeCheckBox(pizza.id)}
+                />
                 <Img src={pizza.image} alt={pizza.name} />
                 <Divider />
                 <Typography>{pizza.name}</Typography>
@@ -70,6 +73,17 @@ ChoosePizzaFlavours.propTypes = {
 function checkboxesChecked (checkboxes) {
   return Object.values(checkboxes).filter(Boolean)
 }
+
+const Card = styled(MaterialCard)`
+  border: 2px solid transparent;
+  border-color: ${({ checked }) => checked ? '#000' : ''};
+`
+
+const CheckBox = styled.input.attrs({
+  type: 'checkbox'
+})`
+  display: none;
+`
 
 const Label = styled(CardLink).attrs({
   component: 'label'
